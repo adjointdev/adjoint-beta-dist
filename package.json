@@ -1,0 +1,25 @@
+{
+  "name": "com.adjoint.editor",
+  "version": "1.0.0",
+  "displayName": "Adjoint",
+  "description": "Adjoint is an AI development environment built directly into the Unity Editor. Chat with AI, generate 3D models, create audio, write code — all without leaving Unity.\n\nLearn more: https://www.adjoint.pro/",
+  "unity": "2021.3",
+  "documentationUrl": "https://github.com/adjoint/adjoint-beta-dist",
+  "licensesUrl": "https://github.com/adjoint/adjoint-beta-dist/blob/main/LICENSE",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
+  },
+  "keywords": [
+    "unity",
+    "ai",
+    "llm",
+    "mcp",
+    "model-context-protocol",
+    "adjoint"
+  ],
+  "author": {
+    "name": "Adjoint",
+    "email": "ashank@adjoint.pro",
+    "url": "https://adjoint.pro"
+  }
+}

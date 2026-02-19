@@ -1,0 +1,123 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="chat-root" class="chat-root">
+        
+        <!-- Header Bar -->
+        <ui:VisualElement name="header" class="chat-header">
+            <ui:VisualElement class="header-left">
+                <ui:Button name="new-chat-button" tooltip="New Chat" class="icon-button">
+                    <ui:VisualElement name="new-chat-icon" class="button-icon plus-icon" />
+                </ui:Button>
+                <ui:Button name="history-button" tooltip="Chat History" class="icon-button">
+                    <ui:VisualElement name="history-icon" class="button-icon history-icon" />
+                </ui:Button>
+                <ui:VisualElement name="header-logo" class="header-logo" />
+                <ui:Label text="ADJOINT" class="header-title" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="header-center">
+                <!-- Model selector moved to input area -->
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="header-right">
+                <ui:Button name="run-analysis-button" tooltip="Run with Performance Analysis" class="icon-button">
+                    <ui:VisualElement name="run-analysis-icon" class="button-icon play-icon" />
+                </ui:Button>
+                <ui:Button name="gen-panel-toggle" tooltip="Generation Queue" class="icon-button">
+                    <ui:VisualElement name="gen-panel-icon" class="button-icon boxes-icon" />
+                </ui:Button>
+                <ui:Button name="settings-button" tooltip="Settings" class="icon-button">
+                    <ui:VisualElement name="settings-icon" class="button-icon settings-icon" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Status Bar -->
+        <ui:VisualElement name="status-bar" class="status-bar">
+            <ui:VisualElement name="connection-indicator" class="connection-indicator connected" />
+            <ui:Label name="status-label" text="Ready" class="status-label" />
+        </ui:VisualElement>
+
+        <!-- Agent Task Panel (collapsible) -->
+        <ui:VisualElement name="agent-task-panel" class="agent-task-panel" style="display: none;">
+            <ui:VisualElement name="task-panel-header" class="task-panel-header">
+                <ui:VisualElement class="task-panel-title-row">
+                    <ui:VisualElement class="task-panel-icon" />
+                    <ui:Label name="task-panel-title" text="TASKS" class="task-panel-title" />
+                    <ui:Label name="task-panel-progress" text="" class="task-panel-progress" />
+                </ui:VisualElement>
+                <ui:Button name="task-panel-toggle" text="v" tooltip="Collapse/Expand" class="task-panel-toggle" />
+            </ui:VisualElement>
+            <ui:VisualElement name="task-panel-content" class="task-panel-content">
+                <ui:ScrollView name="task-list-scroll" class="task-list-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto">
+                    <ui:VisualElement name="task-list" class="task-list" />
+                </ui:ScrollView>
+                <ui:VisualElement name="current-task-status" class="current-task-status">
+                    <ui:Label name="current-task-label" text="" class="current-task-label" />
+                    <ui:VisualElement name="task-progress-bar" class="task-progress-bar">
+                        <ui:VisualElement name="task-progress-fill" class="task-progress-fill" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Main Content Area -->
+        <ui:VisualElement name="main-content" class="main-content">
+            
+            <!-- Chat Area (vertical) -->
+            <ui:VisualElement name="chat-area" class="chat-area">
+                <!-- Messages Area -->
+                <ui:ScrollView name="messages-scroll" class="messages-scroll">
+                    <ui:VisualElement name="messages-container" class="messages-container" />
+                </ui:ScrollView>
+
+                <!-- Typing Indicator -->
+                <ui:VisualElement name="typing-indicator" class="typing-indicator" style="display: none;">
+                    <ui:VisualElement class="typing-dot" />
+                    <ui:VisualElement class="typing-dot" />
+                    <ui:VisualElement class="typing-dot" />
+                    <ui:Label text="PROCESSING" class="typing-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Generation Panel (Slide-out) -->
+            <ui:VisualElement name="generation-panel" class="side-panel generation-panel" style="display: none;" />
+
+            <!-- Settings Panel (Slide-out) -->
+            <ui:VisualElement name="settings-panel" class="side-panel settings-panel" style="display: none;" />
+
+            <!-- History Panel (Slide-out) -->
+            <ui:VisualElement name="history-panel" class="side-panel history-panel" style="display: none;" />
+        </ui:VisualElement>
+
+        <!-- Input Area -->
+        <ui:VisualElement name="input-area" class="input-area">
+            <!-- Context Attachment Bar (Cursor-style) -->
+            <ui:VisualElement name="attachment-bar" class="attachment-bar" style="display: none;">
+                <ui:VisualElement name="attachment-chips" class="attachment-chips" />
+                <ui:Button name="clear-attachments-button" text="Clear all" tooltip="Remove all attachments" class="clear-attachments-button" />
+                <ui:Label name="attachment-summary" class="attachment-summary" style="display: none;" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="input-container">
+                <ui:TextField name="chat-input" multiline="true" class="chat-input" 
+                    placeholder-text="Enter command... (drag context here)" />
+                <ui:VisualElement class="input-buttons">
+                    <ui:Button name="send-button" tooltip="Send" class="send-button">
+                        <ui:VisualElement name="send-icon" class="button-icon send-icon" />
+                    </ui:Button>
+                    <ui:Button name="stop-button" tooltip="Stop" class="stop-button" style="display: none;">
+                        <ui:VisualElement name="stop-icon" class="button-icon x-icon" />
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="input-footer">
+                <ui:Button name="model-selector-button" class="model-selector-button">
+                    <ui:Label name="model-selector-label" class="model-selector-label" />
+                    <ui:VisualElement class="model-selector-arrow" />
+                </ui:Button>
+                <ui:Label text="AI responses may be inaccurate" class="disclaimer" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

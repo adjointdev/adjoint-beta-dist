@@ -1,0 +1,61 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="adjoint-root" class="adjoint-root">
+        <!-- Header Bar - Matches Chat Window Style -->
+        <ui:VisualElement name="header" class="adjoint-header">
+            <ui:VisualElement class="header-left">
+                <ui:VisualElement name="header-logo" class="header-logo" />
+                <ui:Label text="ADJOINT" class="header-title" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="header-center">
+                <ui:Label text="Generation Queue" class="header-subtitle" />
+            </ui:VisualElement>
+            
+            <ui:VisualElement class="header-right">
+                <ui:VisualElement class="active-badge">
+                    <ui:Label name="active-count" text="0" class="active-count" />
+                    <ui:Label text="active" class="active-label" />
+                </ui:VisualElement>
+                <ui:Label name="queue-status" text="Idle" class="queue-status idle" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Active Queue Section -->
+        <ui:VisualElement name="queue-section" class="section queue-section">
+            <ui:VisualElement class="section-header">
+                <ui:Label text="Active Generations" class="section-title" />
+                <ui:VisualElement class="status-indicator-pulse" />
+            </ui:VisualElement>
+            
+            <ui:ScrollView name="queue-scroll" class="queue-scroll">
+                <ui:VisualElement name="queue-container" class="task-list" />
+            </ui:ScrollView>
+            
+            <ui:VisualElement name="empty-queue-message" class="empty-message">
+                <ui:Label text="No active generations" class="empty-text" />
+                <ui:Label text="Start a generation from your AI assistant" class="empty-hint" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- History Section -->
+        <ui:VisualElement name="history-section" class="section history-section">
+            <ui:VisualElement class="section-header">
+                <ui:Label text="Recent History" class="section-title" />
+                <ui:Button name="clear-history-button" text="Clear All" class="clear-button" />
+            </ui:VisualElement>
+            
+            <ui:ScrollView name="history-scroll" class="history-scroll">
+                <ui:VisualElement name="history-container" class="task-list" />
+            </ui:ScrollView>
+            
+            <ui:VisualElement name="empty-history-message" class="empty-message">
+                <ui:Label text="No generation history" class="empty-text" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Footer -->
+        <ui:VisualElement name="footer" class="adjoint-footer">
+            <ui:Label text="Powered by Hunyuan3D • Meshy • ElevenLabs" class="footer-text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
