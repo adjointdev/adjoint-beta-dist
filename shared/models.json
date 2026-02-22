@@ -19,10 +19,10 @@
       "fallbackModelId": "claude-haiku-4-5"
     },
     {
-      "id": "claude-sonnet-4-5",
-      "displayName": "Claude Sonnet 4.5",
+      "id": "claude-sonnet-4-6",
+      "displayName": "Claude Sonnet 4.6",
       "provider": "Anthropic",
-      "apiModelId": "claude-sonnet-4-5-20250929",
+      "apiModelId": "claude-sonnet-4-6",
       "maxContextTokens": 200000,
       "supportsVision": true,
       "supportsTools": true,
