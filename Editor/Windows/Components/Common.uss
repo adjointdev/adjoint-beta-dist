@@ -1,0 +1,622 @@
+/* Common Styles - Professional IDE Aesthetic */
+/* High-Zinc / Deep Obsidian Palette for Dark Theme */
+
+/* Root Container */
+#root-container {
+    padding: 12px;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+/* Title */
+.title {
+    font-size: 14px;
+    -unity-font-style: bold;
+    margin-bottom: 14px;
+    padding: 10px;
+    background-color: #121212;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #242424;
+
+    letter-spacing: 1px;
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 12px;
+    padding: 10px;
+    background-color: #121212;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #242424;
+}
+
+.section-title {
+    font-size: 11px;
+    -unity-font-style: bold;
+    margin-bottom: 10px;
+    color: #858585;
+
+    letter-spacing: 0.5px;
+}
+
+.section-content {
+    padding: 6px;
+}
+
+/* Setting Rows */
+.setting-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    min-height: 22px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.setting-column {
+    flex-direction: column;
+    margin-bottom: 6px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.setting-label {
+    min-width: 130px;
+    flex-shrink: 0;
+    -unity-text-align: middle-left;
+    font-size: 11px;
+    color: #A3A3A3;
+}
+
+.setting-value {
+    -unity-text-align: middle-right;
+    color: #6B6B6B;
+    font-size: 11px;
+}
+
+.setting-toggle {
+    margin-left: auto;
+}
+
+.setting-dropdown {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-top: 3px;
+    max-width: 100%;
+}
+
+.setting-dropdown-inline {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 140px;
+    flex-basis: 180px;
+}
+
+/* Validation Description */
+.validation-description {
+    margin-top: 3px;
+    padding: 6px;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 3px;
+    border-left-width: 2px;
+    border-left-color: #3B82F6;
+    font-size: 10px;
+    color: #858585;
+    white-space: normal;
+}
+
+/* Port Fields */
+.port-field {
+    width: 90px;
+    margin-left: auto;
+}
+
+/* URL Fields */
+.url-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 180px;
+    flex-basis: 220px;
+}
+
+.port-field > .unity-text-field__input {
+    background-color: #161616;
+    border-color: #333333;
+    -unity-text-align: middle-center;
+}
+
+/* Status Container */
+.status-container {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    background-color: #6B6B6B;
+}
+
+.status-dot.connected {
+    background-color: #4ADE80;
+}
+
+.status-dot.disconnected {
+    background-color: #F87171;
+}
+
+.status-dot.configured {
+    background-color: #4ADE80;
+}
+
+.status-dot.not-configured {
+    background-color: #F87171;
+}
+
+.status-dot.warning {
+    background-color: #FBBF24;
+}
+
+.status-dot.unknown {
+    background-color: #6B6B6B;
+}
+
+.status-dot.healthy {
+    background-color: #4ADE80;
+}
+
+.status-text {
+    -unity-text-align: middle-left;
+    font-size: 10px;
+    color: #858585;
+}
+
+.status-indicator-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    background-color: #6B6B6B;
+}
+
+.status-indicator-small.valid {
+    background-color: #4ADE80;
+}
+
+.status-indicator-small.invalid {
+    background-color: #F87171;
+}
+
+/* Buttons - Ghost Style */
+.action-button {
+    min-width: 70px;
+    height: 24px;
+    margin-left: 6px;
+    background-color: transparent;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #3B82F6;
+    color: #3B82F6;
+    -unity-font-style: bold;
+    font-size: 10px;
+
+}
+
+.action-button:hover {
+    background-color: rgba(59, 130, 246, 0.15);
+}
+
+.action-button:active {
+    background-color: rgba(59, 130, 246, 0.25);
+}
+
+.secondary-button {
+    width: 100%;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #333333;
+    color: #858585;
+    font-size: 10px;
+}
+
+.secondary-button:hover {
+    background-color: #2D2D2D;
+    color: #A3A3A3;
+}
+
+.secondary-button:active {
+    background-color: #333333;
+}
+
+/* Manual Configuration */
+.manual-config-content {
+    padding: 6px;
+    margin-top: 6px;
+    background-color: #161616;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #242424;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.config-label {
+    font-size: 10px;
+    -unity-font-style: bold;
+    margin-top: 6px;
+    margin-bottom: 3px;
+    color: #858585;
+
+}
+
+.path-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.config-path-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 4px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.config-path-field > .unity-text-field__input {
+    background-color: #161616;
+    border-color: #333333;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.icon-button {
+    min-width: 45px;
+    height: 22px;
+    margin-left: 4px;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #333333;
+    border-radius: 3px;
+    color: #6B6B6B;
+    font-size: 10px;
+}
+
+.icon-button:hover {
+    background-color: #2D2D2D;
+    color: #858585;
+}
+
+.config-json-row {
+    flex-direction: row;
+    margin-bottom: 6px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.config-json-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 56px;
+    margin-right: 4px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.config-json-field > .unity-text-field__input {
+    background-color: #161616;
+    border-color: #333333;
+    font-size: 9px;
+    -unity-font-style: normal;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.icon-button-vertical {
+    min-width: 45px;
+    height: 26px;
+    align-self: flex-start;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #333333;
+    border-radius: 3px;
+    color: #6B6B6B;
+}
+
+.installation-steps {
+    padding: 6px;
+    background-color: #161616;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #242424;
+    font-size: 10px;
+    color: #858585;
+    white-space: normal;
+    margin-top: 4px;
+}
+
+/* Tools Section */
+.tool-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.tool-action-button {
+    flex-grow: 1;
+    min-width: 0;
+    height: 22px;
+    margin-bottom: 4px;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #333333;
+    border-radius: 3px;
+    color: #858585;
+    font-size: 10px;
+}
+
+.tool-action-button:hover {
+    background-color: #2D2D2D;
+    color: #A3A3A3;
+}
+
+.tool-category-container {
+    flex-direction: column;
+    margin-top: 6px;
+}
+
+.tool-item {
+    flex-direction: column;
+    padding: 8px;
+    margin-bottom: 6px;
+    background-color: #161616;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #242424;
+    border-left-width: 2px;
+    border-left-color: #333333;
+}
+
+.tool-item:hover {
+    background-color: #1A1A1A;
+}
+
+.tool-item-header {
+    flex-direction: row;
+    align-items: center;
+}
+
+.tool-item-toggle {
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+.tool-tags {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    padding-left: 6px;
+}
+
+.tool-tag {
+    font-size: 9px;
+    padding: 2px 5px;
+    margin-left: 3px;
+    margin-top: 2px;
+    background-color: #2D2D2D;
+    border-radius: 2px;
+    color: #858585;
+
+    letter-spacing: 0.3px;
+}
+
+.tool-item-description,
+.tool-parameters {
+    font-size: 10px;
+    color: #6B6B6B;
+    white-space: normal;
+    margin-top: 4px;
+}
+
+.tool-parameters {
+    -unity-font-style: italic;
+}
+
+/* Advanced Settings */
+.advanced-settings-foldout {
+    margin-top: 12px;
+}
+
+.advanced-settings-foldout > .unity-foldout__toggle {
+    -unity-font-style: bold;
+    font-size: 11px;
+    color: #858585;
+}
+
+.advanced-settings-content {
+    padding: 6px;
+    margin-top: 6px;
+    background-color: #161616;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #242424;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.advanced-label {
+    font-size: 10px;
+    -unity-font-style: bold;
+    margin-bottom: 6px;
+    color: #6B6B6B;
+    white-space: normal;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.override-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+.override-label {
+    font-size: 10px;
+    -unity-font-style: bold;
+    min-width: 110px;
+    white-space: normal;
+    flex-shrink: 1;
+    color: #858585;
+}
+
+.help-text {
+    font-size: 9px;
+    color: #4B4B4B;
+    white-space: normal;
+    flex-shrink: 1;
+    min-width: 0;
+    margin-bottom: 4px;
+}
+
+.path-override-controls {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.override-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 4px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.override-field > .unity-text-field__input {
+    background-color: #161616;
+    border-color: #333333;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.setting-label-small {
+    font-size: 10px;
+    min-width: 110px;
+    -unity-text-align: middle-left;
+    color: #858585;
+}
+
+.path-display-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 4px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.path-display-field > .unity-text-field__input {
+    background-color: #161616;
+    border-color: #333333;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+/* Dark Theme Specific */
+.unity-theme-dark .tool-tag {
+    color: #858585;
+    background-color: #2D2D2D;
+}
+
+.unity-theme-dark .tool-item {
+    background-color: #161616;
+    border-color: #242424;
+}
+
+.unity-theme-dark .tool-item-description,
+.unity-theme-dark .tool-parameters {
+    color: #6B6B6B;
+}
+
+/* Light Theme Overrides */
+.unity-theme-light .title {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.unity-theme-light .section {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.unity-theme-light .validation-description {
+    background-color: rgba(59, 130, 246, 0.08);
+    border-left-color: #3B82F6;
+}
+
+.unity-theme-light .port-field > .unity-text-field__input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.unity-theme-light .config-path-field > .unity-text-field__input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.unity-theme-light .config-json-field > .unity-text-field__input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.unity-theme-light .manual-config-content {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.unity-theme-light .installation-steps {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.unity-theme-light .advanced-settings-content {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.unity-theme-light .override-field > .unity-text-field__input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.unity-theme-light .path-display-field > .unity-text-field__input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.unity-theme-light .tool-tag {
+    color: rgba(40, 40, 40, 1);
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.unity-theme-light .tool-item {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}

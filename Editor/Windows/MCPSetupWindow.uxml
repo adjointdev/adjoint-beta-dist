@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="Components/Common.uss" />
+    <Style src="MCPSetupWindow.uss" />
+    <ui:ScrollView name="root-container" mode="Vertical">
+        <ui:Label text="Adjoint Setup" name="title" class="title" />
+
+        <ui:VisualElement class="section">
+            <ui:Label text="Optional Packages" class="section-title" />
+            <ui:VisualElement class="section-content">
+                <ui:Label text="These optional packages enhance Adjoint but are not required." class="help-text description-text" />
+
+                <!-- Dependency Status -->
+                <ui:VisualElement name="dependency-list">
+                    <!-- glTFast Status -->
+                    <ui:VisualElement class="dependency-item">
+                        <ui:VisualElement class="dependency-row">
+                            <ui:Label text="glTFast (3D Import)" class="dependency-name" />
+                            <ui:Label name="gltfast-version" text="..." class="setting-value" />
+                            <ui:VisualElement name="gltfast-indicator" class="status-indicator-small" />
+                        </ui:VisualElement>
+                        <ui:Label name="gltfast-details" class="help-text dependency-details" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Overall Status Message -->
+                <ui:VisualElement name="status-message-container">
+                    <ui:Label name="status-message" class="help-text" />
+                </ui:VisualElement>
+
+                <!-- Installation (shown when glTFast missing) -->
+                <ui:VisualElement name="installation-section" class="installation-container">
+                    <ui:Button name="install-gltfast-button" text="Install glTFast Package" class="secondary-button install-link-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Action Buttons -->
+        <ui:VisualElement class="button-container">
+            <ui:Button name="refresh-button" text="Refresh" class="setup-button secondary-button" />
+            <ui:Button name="done-button" text="Done" class="setup-button action-button" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

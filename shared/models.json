@@ -1,0 +1,148 @@
+{
+  "models": [
+    {
+      "id": "claude-opus-4-6",
+      "displayName": "Claude Opus 4.6",
+      "provider": "Anthropic",
+      "apiModelId": "claude-opus-4-6",
+      "maxContextTokens": 200000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 5.0,
+      "costPerMillionOutputTokens": 25.0,
+      "tier": "reasoning",
+      "multiplierLabel": "2x",
+      "costMultiplier": 2.0,
+      "rateLimitClass": "tier1",
+
+      "showInSelector": true,
+      "fallbackModelId": "claude-haiku-4-5"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "displayName": "Claude Sonnet 4.6",
+      "provider": "Anthropic",
+      "apiModelId": "claude-sonnet-4-6",
+      "maxContextTokens": 200000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 3.0,
+      "costPerMillionOutputTokens": 15.0,
+      "tier": "challenging",
+      "multiplierLabel": "1x",
+      "costMultiplier": 1.0,
+      "rateLimitClass": "tier2",
+
+      "showInSelector": true,
+      "fallbackModelId": "claude-haiku-4-5"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "displayName": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-haiku-4-5-20251001",
+      "maxContextTokens": 200000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 1.0,
+      "costPerMillionOutputTokens": 5.0,
+      "tier": "simple",
+      "multiplierLabel": "0.5x",
+      "costMultiplier": 0.5,
+      "rateLimitClass": "tier3",
+
+      "showInSelector": true,
+      "fallbackModelId": null
+    },
+    {
+      "id": "gpt-5.4",
+      "displayName": "GPT-5.4",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-5.4",
+      "maxContextTokens": 272000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 2.50,
+      "costPerMillionOutputTokens": 15.0,
+      "tier": "challenging",
+      "multiplierLabel": "1x",
+      "costMultiplier": 1.0,
+      "rateLimitClass": "tier2",
+
+      "showInSelector": true,
+      "fallbackModelId": "gpt-5-mini"
+    },
+    {
+      "id": "gpt-5-mini",
+      "displayName": "GPT-5 Mini",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-5-mini-2025-08-07",
+      "maxContextTokens": 400000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 0.25,
+      "costPerMillionOutputTokens": 2.0,
+      "tier": "simple",
+      "multiplierLabel": "0.5x",
+      "costMultiplier": 0.5,
+      "rateLimitClass": "tier3",
+
+      "showInSelector": true,
+      "fallbackModelId": null
+    },
+    {
+      "id": "gemini-2.0-flash",
+      "displayName": "Gemini 2.0 Flash",
+      "provider": "Google",
+      "apiModelId": "gemini-2.0-flash-exp",
+      "maxContextTokens": 1000000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 0.1,
+      "costPerMillionOutputTokens": 0.4,
+      "tier": "simple",
+      "multiplierLabel": "0.5x",
+      "costMultiplier": 0.5,
+      "rateLimitClass": "tier3",
+
+      "showInSelector": false,
+      "fallbackModelId": null
+    },
+    {
+      "id": "gemini-1.5-pro",
+      "displayName": "Gemini 1.5 Pro",
+      "provider": "Google",
+      "apiModelId": "gemini-1.5-pro",
+      "maxContextTokens": 2000000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 1.25,
+      "costPerMillionOutputTokens": 5.0,
+      "tier": "challenging",
+      "multiplierLabel": "1x",
+      "costMultiplier": 1.0,
+      "rateLimitClass": "tier2",
+
+      "showInSelector": false,
+      "fallbackModelId": "gemini-2.0-flash"
+    },
+    {
+      "id": "gemini-1.5-flash",
+      "displayName": "Gemini 1.5 Flash",
+      "provider": "Google",
+      "apiModelId": "gemini-1.5-flash",
+      "maxContextTokens": 1000000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 0.075,
+      "costPerMillionOutputTokens": 0.3,
+      "tier": "simple",
+      "multiplierLabel": "0.5x",
+      "costMultiplier": 0.5,
+      "rateLimitClass": "tier3",
+
+      "showInSelector": false,
+      "fallbackModelId": null
+    }
+  ]
+}
