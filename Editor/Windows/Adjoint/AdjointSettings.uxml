@@ -1,0 +1,72 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="settings-root" class="adjoint-root">
+        <!-- Header Bar -->
+        <ui:VisualElement name="header" class="adjoint-header">
+            <ui:VisualElement class="header-left">
+                <ui:VisualElement name="header-logo" class="header-logo" />
+                <ui:Label text="ADJOINT" class="header-title" />
+            </ui:VisualElement>
+            <ui:VisualElement class="header-center">
+                <ui:Label text="Settings" class="header-subtitle" />
+            </ui:VisualElement>
+            <ui:VisualElement class="header-right" />
+        </ui:VisualElement>
+
+        <!-- Scrollable Content -->
+        <ui:ScrollView name="settings-scroll" class="settings-scroll">
+            <ui:VisualElement class="content-wrapper">
+
+                <!-- Account Section -->
+                <ui:VisualElement name="account-section" class="section settings-section">
+                    <ui:Label text="Account" class="section-title" />
+                    <ui:VisualElement class="section-content">
+                        <ui:VisualElement class="setting-row">
+                            <ui:Label text="Logged in as" class="setting-label" />
+                            <ui:Label name="user-email" text="" class="setting-value" />
+                        </ui:VisualElement>
+                        <ui:Button name="logout-button" text="Log Out" class="secondary-button settings-logout-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Agent Settings Section -->
+                <ui:VisualElement name="agent-section" class="section settings-section">
+                    <ui:Label text="Agent" class="section-title" />
+                    <ui:VisualElement class="section-content">
+                        <ui:VisualElement class="setting-row">
+                            <ui:Label text="Enable Verification" class="setting-label" />
+                            <ui:Toggle name="verification-toggle" class="setting-toggle" />
+                        </ui:VisualElement>
+                        <ui:Label text="Verify each task completion with LLM" class="setting-description" />
+
+                        <ui:VisualElement class="setting-row">
+                            <ui:Label text="Auto Execute Tools" class="setting-label" />
+                            <ui:Toggle name="auto-execute-toggle" class="setting-toggle" />
+                        </ui:VisualElement>
+                        <ui:Label text="Execute tools without confirmation (except destructive)" class="setting-description" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Developer Section -->
+                <ui:VisualElement name="developer-section" class="section settings-section">
+                    <ui:Label text="Developer" class="section-title" />
+                    <ui:VisualElement class="section-content">
+                        <ui:VisualElement class="setting-row">
+                            <ui:Label text="Debug Logs" class="setting-label" />
+                            <ui:Toggle name="debug-logs-toggle" class="setting-toggle" />
+                        </ui:VisualElement>
+                        <ui:Label text="Show detailed agent and system logs in the Console" class="setting-description" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Quick Actions Section -->
+                <ui:VisualElement name="actions-section" class="section settings-section">
+                    <ui:Label text="Quick Actions" class="section-title" />
+                    <ui:VisualElement class="section-content">
+                        <ui:Button name="open-chat-button" text="Open Chat Window" class="action-button settings-action-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
