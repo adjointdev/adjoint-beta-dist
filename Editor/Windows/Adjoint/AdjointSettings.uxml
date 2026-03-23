@@ -6,9 +6,7 @@
                 <ui:VisualElement name="header-logo" class="header-logo" />
                 <ui:Label text="ADJOINT" class="header-title" />
             </ui:VisualElement>
-            <ui:VisualElement class="header-center">
-                <ui:Label text="Settings" class="header-subtitle" />
-            </ui:VisualElement>
+            <ui:VisualElement class="header-center" />
             <ui:VisualElement class="header-right" />
         </ui:VisualElement>
 
