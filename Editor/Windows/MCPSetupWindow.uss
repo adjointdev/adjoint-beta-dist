@@ -86,3 +86,40 @@
 .description-text {
     margin-bottom: 12px;
 }
+
+/* Setup title */
+.title {
+    font-size: 16px;
+}
+
+/* Tips section */
+.setup-heading {
+    font-size: 14px;
+    color: #E4E4E4;
+    -unity-font-style: bold;
+}
+
+.tip-row {
+    padding: 4px 0;
+    border-bottom-width: 1px;
+    border-bottom-color: #242424;
+}
+
+.tip-label {
+    font-size: 12px;
+    color: #E4E4E4;
+    -unity-font-style: bold;
+}
+
+.tip-label-context {
+    font-size: 12px;
+    color: #3B82F6;
+    -unity-font-style: bold;
+}
+
+.tip-detail {
+    -unity-text-align: middle-right;
+    color: #6B6B6B;
+    white-space: normal;
+    flex-shrink: 1;
+}

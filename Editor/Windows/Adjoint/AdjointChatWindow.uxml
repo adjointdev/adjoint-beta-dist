@@ -145,5 +145,81 @@
             </ui:VisualElement>
         </ui:VisualElement>
 
+        <!-- 3D Model Clarification Prompt (replaces input area during model generation) -->
+        <ui:VisualElement name="model-clarification-prompt" class="clarification-prompt" style="display: none;">
+
+            <!-- Header with title and close button -->
+            <ui:VisualElement class="clarification-header">
+                <ui:Label name="clarification-title" text="Customize 3D Model" class="clarification-title" />
+                <ui:Button name="clarification-cancel" class="clarification-close-btn">
+                    <ui:Label text="&#x2715;" class="clarification-close-icon" />
+                </ui:Button>
+            </ui:VisualElement>
+
+            <!-- Prompt preview -->
+            <ui:VisualElement class="clarification-prompt-preview">
+                <ui:Label name="clarification-prompt-text" text="" class="clarification-prompt-text" />
+            </ui:VisualElement>
+
+            <!-- Style -->
+            <ui:VisualElement class="clarification-section">
+                <ui:Label text="STYLE" class="clarification-section-label" />
+                <ui:VisualElement class="clarification-row">
+                    <ui:Button name="style-toon" class="clarification-option">
+                        <ui:Label text="1" class="clarification-option-key" />
+                        <ui:Label text="Toon" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="style-realistic" class="clarification-option">
+                        <ui:Label text="2" class="clarification-option-key" />
+                        <ui:Label text="Realistic" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="style-stylized" class="clarification-option">
+                        <ui:Label text="3" class="clarification-option-key" />
+                        <ui:Label text="Stylized" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="style-other" class="clarification-option">
+                        <ui:Label text="4" class="clarification-option-key" />
+                        <ui:Label text="Other..." class="clarification-option-label" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:TextField name="style-custom-input" class="clarification-text-input" style="display: none;" />
+            </ui:VisualElement>
+
+            <!-- Poly Count -->
+            <ui:VisualElement class="clarification-section">
+                <ui:VisualElement class="clarification-section-header">
+                    <ui:Label text="POLY COUNT" class="clarification-section-label" />
+                    <ui:Button name="polycount-skip" class="clarification-skip-btn">
+                        <ui:Label text="Auto" class="clarification-skip-label" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement class="clarification-slider-row">
+                    <ui:Slider name="polycount-slider" low-value="3" high-value="5.7" value="4.9"
+                               class="clarification-slider" />
+                    <ui:Label name="polycount-value" text="80K" class="clarification-value-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Rigged? -->
+            <ui:VisualElement class="clarification-section">
+                <ui:Label text="RIGGED?" class="clarification-section-label" />
+                <ui:VisualElement class="clarification-row">
+                    <ui:Button name="rig-yes" class="clarification-option">
+                        <ui:Label text="Yes" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="rig-no" class="clarification-option">
+                        <ui:Label text="No" class="clarification-option-label" />
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Generate button -->
+            <ui:VisualElement class="clarification-actions">
+                <ui:Button name="clarification-confirm" class="clarification-generate-btn">
+                    <ui:Label text="Generate" class="clarification-generate-label" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
     </ui:VisualElement>
 </ui:UXML>

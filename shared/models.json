@@ -11,12 +11,30 @@
       "costPerMillionInputTokens": 5.0,
       "costPerMillionOutputTokens": 25.0,
       "tier": "reasoning",
-      "multiplierLabel": "2x",
-      "costMultiplier": 2.0,
+      "multiplierLabel": "4x",
+      "costMultiplier": 4.0,
       "rateLimitClass": "tier1",
 
       "showInSelector": true,
       "fallbackModelId": "claude-haiku-4-5"
+    },
+    {
+      "id": "mimo-v2-pro",
+      "displayName": "Auto",
+      "provider": "Xiaomi",
+      "apiModelId": "mimo-v2-pro",
+      "maxContextTokens": 1048576,
+      "supportsVision": false,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 1.0,
+      "costPerMillionOutputTokens": 3.0,
+      "tier": "challenging",
+      "multiplierLabel": "1x",
+      "costMultiplier": 1.0,
+      "rateLimitClass": "tier2",
+
+      "showInSelector": true,
+      "fallbackModelId": null
     },
     {
       "id": "claude-sonnet-4-6",
@@ -29,30 +47,12 @@
       "costPerMillionInputTokens": 3.0,
       "costPerMillionOutputTokens": 15.0,
       "tier": "challenging",
-      "multiplierLabel": "1x",
-      "costMultiplier": 1.0,
+      "multiplierLabel": "2x",
+      "costMultiplier": 2.0,
       "rateLimitClass": "tier2",
 
       "showInSelector": true,
       "fallbackModelId": "claude-haiku-4-5"
-    },
-    {
-      "id": "claude-haiku-4-5",
-      "displayName": "Claude Haiku 4.5",
-      "provider": "Anthropic",
-      "apiModelId": "claude-haiku-4-5-20251001",
-      "maxContextTokens": 200000,
-      "supportsVision": true,
-      "supportsTools": true,
-      "costPerMillionInputTokens": 1.0,
-      "costPerMillionOutputTokens": 5.0,
-      "tier": "simple",
-      "multiplierLabel": "0.5x",
-      "costMultiplier": 0.5,
-      "rateLimitClass": "tier3",
-
-      "showInSelector": true,
-      "fallbackModelId": null
     },
     {
       "id": "gpt-5.4",
@@ -65,12 +65,48 @@
       "costPerMillionInputTokens": 2.50,
       "costPerMillionOutputTokens": 15.0,
       "tier": "challenging",
-      "multiplierLabel": "1x",
-      "costMultiplier": 1.0,
+      "multiplierLabel": "2x",
+      "costMultiplier": 2.0,
       "rateLimitClass": "tier2",
 
       "showInSelector": true,
       "fallbackModelId": "gpt-5-mini"
+    },
+    {
+      "id": "minimax-m2.7",
+      "displayName": "Auto",
+      "provider": "MiniMax",
+      "apiModelId": "MiniMax-M2.7",
+      "maxContextTokens": 204800,
+      "supportsVision": false,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 0.30,
+      "costPerMillionOutputTokens": 1.20,
+      "tier": "simple",
+      "multiplierLabel": "0.5x",
+      "costMultiplier": 0.5,
+      "rateLimitClass": "tier3",
+
+      "showInSelector": true,
+      "fallbackModelId": null
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "displayName": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "apiModelId": "claude-haiku-4-5-20251001",
+      "maxContextTokens": 200000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 1.0,
+      "costPerMillionOutputTokens": 5.0,
+      "tier": "simple",
+      "multiplierLabel": "1x",
+      "costMultiplier": 1.0,
+      "rateLimitClass": "tier3",
+
+      "showInSelector": true,
+      "fallbackModelId": null
     },
     {
       "id": "gpt-5-mini",
@@ -83,8 +119,8 @@
       "costPerMillionInputTokens": 0.25,
       "costPerMillionOutputTokens": 2.0,
       "tier": "simple",
-      "multiplierLabel": "0.5x",
-      "costMultiplier": 0.5,
+      "multiplierLabel": "1x",
+      "costMultiplier": 1.0,
       "rateLimitClass": "tier3",
 
       "showInSelector": true,
