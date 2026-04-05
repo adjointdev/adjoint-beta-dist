@@ -1143,6 +1143,59 @@
    CONTEXT ATTACHMENT BAR (Cursor-style)
    ======================================== */
 
+/* Context attachment chips on sent user messages */
+.message-context-chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.message-context-chip {
+    flex-direction: row;
+    align-items: center;
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #2A2A2A;
+    padding: 2px 8px;
+    margin: 2px 4px 2px 0;
+    max-width: 180px;
+    cursor: link;
+}
+
+.message-context-chip:hover {
+    background-color: #222222;
+    border-color: #3B82F6;
+}
+
+.message-context-chip-icon {
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    border-radius: 3px;
+}
+
+.message-context-chip-icon.script { background-color: #4ADE80; }
+.message-context-chip-icon.gameobject { background-color: #60A5FA; }
+.message-context-chip-icon.prefab { background-color: #C084FC; }
+.message-context-chip-icon.scriptable-object { background-color: #FB923C; }
+.message-context-chip-icon.folder { background-color: #FACC15; }
+.message-context-chip-icon.console-logs { background-color: #F87171; }
+.message-context-chip-icon.scene { background-color: #38BDF8; }
+.message-context-chip-icon.asset { background-color: #A78BFA; }
+
+.message-context-chip-name {
+    font-size: 10px;
+    color: #808080;
+    -unity-text-overflow-position: end;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-shrink: 1;
+}
+
+/* Input area attachment bar */
 .attachment-bar {
     flex-direction: row;
     justify-content: space-between;
@@ -2173,6 +2226,83 @@
 
 .dashboard-button:hover {
     background-color: #2563EB;
+}
+
+/* ========================================
+   SETTINGS USAGE BARS
+   ======================================== */
+
+.usage-section {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom-width: 1px;
+    border-bottom-color: #242424;
+}
+
+.usage-section-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.usage-refresh-button {
+    background-color: transparent;
+    border-width: 0;
+    color: #3B82F6;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.usage-refresh-button:hover {
+    color: #60A5FA;
+    background-color: #1A1A1A;
+}
+
+.usage-bar-row {
+    margin-bottom: 8px;
+}
+
+.usage-bar-row:last-child {
+    margin-bottom: 0;
+}
+
+.usage-bar-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.usage-bar-label {
+    font-size: 9px;
+    color: #A0A0A0;
+}
+
+.usage-bar-percent {
+    font-size: 9px;
+    color: #6B6B6B;
+}
+
+.usage-bar-track {
+    height: 3px;
+    background-color: #1A1A1A;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.usage-bar-fill {
+    height: 3px;
+    background-color: #3B82F6;
+    border-radius: 2px;
+}
+
+.usage-loading-label {
+    font-size: 9px;
+    color: #4A4A4A;
+    -unity-text-align: middle-center;
+    margin-top: 4px;
 }
 
 /* ========================================
