@@ -2170,6 +2170,22 @@
     color: #F87171;
 }
 
+.login-cancel-button {
+    padding: 6px 16px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 4px;
+    color: #6B6B6B;
+    font-size: 11px;
+    -unity-text-align: middle-center;
+    margin-top: 12px;
+    cursor: link;
+}
+
+.login-cancel-button:hover {
+    color: #A0A0A0;
+}
+
 /* ========================================
    SETTINGS ACCOUNT SECTION
    ======================================== */
