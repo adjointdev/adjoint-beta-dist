@@ -221,5 +221,72 @@
             </ui:VisualElement>
         </ui:VisualElement>
 
+        <!-- Sprite Sheet Clarification Prompt (replaces input area during sprite sheet generation) -->
+        <ui:VisualElement name="spritesheet-clarification-prompt" class="clarification-prompt" style="display: none;">
+
+            <!-- Header with title and close button -->
+            <ui:VisualElement class="clarification-header">
+                <ui:Label name="ss-clarification-title" text="Customize Sprite Sheet" class="clarification-title" />
+                <ui:Button name="ss-clarification-cancel" class="clarification-close-btn">
+                    <ui:Label text="&#x2715;" class="clarification-close-icon" />
+                </ui:Button>
+            </ui:VisualElement>
+
+            <!-- Prompt preview -->
+            <ui:VisualElement class="clarification-prompt-preview">
+                <ui:Label name="ss-clarification-prompt-text" text="" class="clarification-prompt-text" />
+            </ui:VisualElement>
+
+            <!-- Style -->
+            <ui:VisualElement class="clarification-section">
+                <ui:Label text="STYLE" class="clarification-section-label" />
+                <ui:VisualElement class="clarification-row-wrap">
+                    <ui:Button name="ss-style-toon" class="clarification-option">
+                        <ui:Label text="1" class="clarification-option-key" />
+                        <ui:Label text="Toon" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="ss-style-realistic" class="clarification-option">
+                        <ui:Label text="2" class="clarification-option-key" />
+                        <ui:Label text="Realistic" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="ss-style-stylized" class="clarification-option">
+                        <ui:Label text="3" class="clarification-option-key" />
+                        <ui:Label text="Stylized" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="ss-style-other" class="clarification-option">
+                        <ui:Label text="4" class="clarification-option-key" />
+                        <ui:Label text="Other..." class="clarification-option-label" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:TextField name="ss-style-custom-input" class="clarification-text-input" style="display: none;" />
+            </ui:VisualElement>
+
+            <!-- Frame Count / Layout -->
+            <ui:VisualElement class="clarification-section">
+                <ui:Label text="FRAMES &amp; LAYOUT" class="clarification-section-label" />
+                <ui:VisualElement class="clarification-row-wrap">
+                    <ui:Button name="ss-layout-4x1" class="clarification-option">
+                        <ui:Label text="1" class="clarification-option-key" />
+                        <ui:Label text="4 frames (4&#x00D7;1)" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="ss-layout-4x2" class="clarification-option">
+                        <ui:Label text="2" class="clarification-option-key" />
+                        <ui:Label text="8 frames (4&#x00D7;2)" class="clarification-option-label" />
+                    </ui:Button>
+                    <ui:Button name="ss-layout-4x3" class="clarification-option">
+                        <ui:Label text="3" class="clarification-option-key" />
+                        <ui:Label text="12 frames (4&#x00D7;3)" class="clarification-option-label" />
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Generate button -->
+            <ui:VisualElement class="clarification-actions">
+                <ui:Button name="ss-clarification-confirm" class="clarification-generate-btn">
+                    <ui:Label text="Generate" class="clarification-generate-label" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
     </ui:VisualElement>
 </ui:UXML>

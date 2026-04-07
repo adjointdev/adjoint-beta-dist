@@ -44,6 +44,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
 
+                <!-- Developer section hidden from users
                 <ui:VisualElement name="developer-section" class="section settings-section">
                     <ui:Label text="Developer" class="section-title" />
                     <ui:VisualElement class="section-content">
@@ -54,6 +55,7 @@
                         <ui:Label text="Show detailed agent and system logs in the Console" class="setting-description" />
                     </ui:VisualElement>
                 </ui:VisualElement>
+                -->
 
                 <!-- Quick Actions Section -->
                 <ui:VisualElement name="actions-section" class="section settings-section">

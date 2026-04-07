@@ -3081,6 +3081,26 @@
     letter-spacing: 0.5px;
 }
 
+/* Sprite sheet clarification rows — buttons must shrink to fit */
+.clarification-row-wrap {
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.clarification-row-wrap > .clarification-option {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    padding: 8px 6px;
+    overflow: hidden;
+}
+
+.clarification-row-wrap > .clarification-option > .clarification-option-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -unity-text-overflow-position: end;
+}
+
 /* ============================================
    @ Mention Popup
    ============================================ */
