@@ -1,6 +1,6 @@
 {
   "name": "com.adjoint.editor",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "displayName": "Adjoint",
   "description": "Adjoint is an AI development environment built directly into the Unity Editor. Chat with AI, generate 3D models, create audio, write code — all without leaving Unity.\n\nLearn more: https://www.adjoint.pro/",
   "unity": "6000.0",
@@ -9,6 +9,9 @@
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "3.0.2"
   },
+  "testables": [
+    "com.adjoint.editor"
+  ],
   "keywords": [
     "unity",
     "ai",

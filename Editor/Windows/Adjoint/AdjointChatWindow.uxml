@@ -70,13 +70,6 @@
                     <ui:VisualElement name="messages-container" class="messages-container" />
                 </ui:ScrollView>
 
-                <!-- Typing Indicator -->
-                <ui:VisualElement name="typing-indicator" class="typing-indicator" style="display: none;">
-                    <ui:VisualElement class="typing-dot" />
-                    <ui:VisualElement class="typing-dot" />
-                    <ui:VisualElement class="typing-dot" />
-                    <ui:Label text="PROCESSING" class="typing-text" />
-                </ui:VisualElement>
             </ui:VisualElement>
 
             <!-- Generation Panel (Slide-out) -->
@@ -87,6 +80,30 @@
 
             <!-- History Panel (Slide-out) -->
             <ui:VisualElement name="history-panel" class="side-panel history-panel" style="display: none;" />
+        </ui:VisualElement>
+
+        <!-- Change Log Panel (tracks mutating tool calls across the session) -->
+        <ui:VisualElement name="change-log-panel" class="change-log-panel" style="display: none;">
+            <ui:VisualElement name="change-log-header" class="change-log-header">
+                <ui:VisualElement class="change-log-title-row">
+                    <ui:VisualElement class="change-log-dot" />
+                    <ui:Label name="change-log-title" text="Edited 0 Files" class="change-log-title" />
+                </ui:VisualElement>
+                <ui:VisualElement class="change-log-actions">
+                    <ui:Button name="change-log-reject-btn" text="Undo all" class="change-log-reject-btn" style="display: none;" />
+                    <ui:Button name="change-log-accept-btn" text="Keep all" class="change-log-accept-btn" style="display: none;" />
+                    <ui:Label name="change-log-chevron" text="›" class="change-log-chevron" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="change-log-content" class="change-log-content" style="display: none;">
+                <ui:ScrollView name="change-log-scroll" class="change-log-scroll"
+                               horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto">
+                    <ui:VisualElement name="change-log-entries" class="change-log-entries" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="change-log-status" class="change-log-status" style="display: none;">
+                <ui:Label name="change-log-status-label" class="change-log-status-label" />
+            </ui:VisualElement>
         </ui:VisualElement>
 
         <!-- Input Area -->
@@ -119,14 +136,26 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="input-footer">
-                <ui:Button name="model-selector-button" class="model-selector-button">
-                    <ui:Label name="model-selector-label" class="model-selector-label" />
-                    <ui:VisualElement class="model-selector-arrow" />
-                </ui:Button>
+                <ui:VisualElement class="input-footer-left">
+                    <ui:VisualElement name="mode-switcher" class="mode-switcher">
+                        <ui:Button name="mode-btn-agent" class="mode-switcher-btn mode-switcher-agent">
+                            <ui:Label text="Agent" class="mode-switcher-btn-label" />
+                        </ui:Button>
+                        <ui:Button name="mode-btn-plan" class="mode-switcher-btn mode-switcher-plan">
+                            <ui:Label text="Plan" class="mode-switcher-btn-label" />
+                        </ui:Button>
+                        <ui:Button name="mode-btn-ask" class="mode-switcher-btn mode-switcher-ask">
+                            <ui:Label text="Ask" class="mode-switcher-btn-label" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                    <ui:Button name="model-selector-button" class="model-selector-button">
+                        <ui:Label name="model-selector-label" class="model-selector-label" />
+                        <ui:VisualElement class="model-selector-arrow" />
+                    </ui:Button>
+                </ui:VisualElement>
                 <ui:Button name="auto-accept-toggle" class="auto-accept-toggle" tooltip="Toggle between auto-accept and manual approval of changes">
                     <ui:Label name="auto-accept-label" class="auto-accept-label" text="Auto-Accept" />
                 </ui:Button>
-                <ui:Label text="AI responses may be inaccurate" class="disclaimer" />
             </ui:VisualElement>
         </ui:VisualElement>
 
@@ -142,6 +171,26 @@
                     <ui:Label text="2" class="accept-reject-option-number" />
                     <ui:Label text="No" class="accept-reject-option-text" />
                 </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Plan Review Prompt (replaces input area when plan needs review in Plan mode) -->
+        <ui:VisualElement name="plan-review-prompt" class="plan-review-prompt" style="display: none;">
+            <ui:Label text="Execute this plan?" class="plan-review-title" />
+            <ui:VisualElement class="plan-review-options">
+                <ui:Button name="plan-execute-btn" class="plan-review-btn plan-execute-btn">
+                    <ui:Label text="Execute" class="plan-review-btn-label" />
+                </ui:Button>
+                <ui:Button name="plan-revise-btn" class="plan-review-btn plan-revise-btn">
+                    <ui:Label text="Revise" class="plan-review-btn-label" />
+                </ui:Button>
+                <ui:Button name="plan-discard-btn" class="plan-review-btn plan-discard-btn">
+                    <ui:Label text="Discard" class="plan-review-btn-label" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:VisualElement name="plan-revision-container" class="plan-revision-container" style="display: none;">
+                <ui:TextField name="plan-revision-input" class="plan-revision-input" placeholder-text="Describe your revisions..." />
+                <ui:Button name="plan-revision-send-btn" class="plan-revision-send-btn" tooltip="Send revision" />
             </ui:VisualElement>
         </ui:VisualElement>
 

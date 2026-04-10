@@ -454,6 +454,29 @@
 }
 
 /* ========================================
+   Screenshot Thumbnail
+   ======================================== */
+
+.inline-tool-call.has-screenshot {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#screenshot-thumbnail-wrapper {
+    margin-top: 6px;
+    margin-left: 22px;
+    margin-bottom: 4px;
+}
+
+.screenshot-thumb {
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 320px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ========================================
    Script Code Preview
    ======================================== */
 
@@ -806,38 +829,76 @@
 }
 
 /* ========================================
-   TYPING INDICATOR
+   INLINE THINKING INDICATOR (Multi-cycle)
    ======================================== */
 
-.typing-indicator {
+.thinking-indicator-inline {
+    margin: 2px 0 2px 0;
+    border-radius: 4px;
+}
+
+.thinking-header {
     flex-direction: row;
     align-items: center;
-    padding: 6px 10px;
-    margin: 3px 12px 6px 12px;
-    background-color: #121212;
+    padding: 4px 8px 4px 2px;
     border-radius: 4px;
-    border-width: 1px;
-    border-color: #242424;
+    transition-property: background-color;
+    transition-duration: 0.15s;
+}
+
+.thinking-header:hover {
+    background-color: #1A1A1A;
+}
+
+.thinking-label {
+    font-size: 11px;
+    color: #707070;
+    margin-right: 4px;
     flex-shrink: 0;
 }
 
-.typing-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: #3B82F6;
-    margin-right: 3px;
-    opacity: 0.3;
-    transition-property: opacity;
-    transition-duration: 0.3s;
+.thinking-chevron {
+    font-size: 10px;
+    color: #505050;
+    flex-shrink: 0;
+    transition-property: rotate;
+    transition-duration: 0.15s;
 }
 
-.typing-text {
-    font-size: 10px;
-    color: #6B6B6B;
-    margin-left: 6px;
+.thinking-header:hover .thinking-chevron {
+    color: #888888;
+}
 
-    letter-spacing: 0.5px;
+.thinking-header:hover .thinking-label {
+    color: #A0A0A0;
+}
+
+.thinking-content {
+    padding: 6px 10px 8px 10px;
+    max-height: 300px;
+    overflow: scroll;
+    border-top-width: 1px;
+    border-top-color: #1A1A1A;
+    display: none;
+}
+
+.thinking-content.expanded {
+    display: flex;
+}
+
+.thinking-text {
+    font-size: 11px;
+    color: #4A4A4A;
+    white-space: normal;
+    -unity-word-wrap: true;
+}
+
+.thinking-bottom-label {
+    font-size: 11px;
+    color: #6B6B6B;
+    -unity-font-style: italic;
+    padding: 4px 0 2px 0;
+    margin-top: 2px;
 }
 
 /* ========================================
@@ -925,31 +986,74 @@
     color: #C8C8C8;
     padding: 3px 6px;
     white-space: normal;
-    white-space: normal;
-    overflow: hidden;
 }
 
 .chat-input .unity-text-field__input {
     background-color: transparent;
     border-width: 0;
-    padding: 0;
-    white-space: normal;
+    padding: 0 0 0 8px;
     white-space: normal;
     -unity-text-align: upper-left;
-    overflow: hidden;
 }
 
 .chat-input:focus {
     border-width: 0;
 }
 
-/* Input footer with model selector and disclaimer */
+/* Thin scrollbar on the left side, no arrow buttons */
+.chat-input .unity-scroller {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    right: auto;
+}
+
+.chat-input .unity-scroller .unity-base-slider {
+    margin: 0;
+    padding: 0;
+    min-width: 4px;
+}
+
+.chat-input .unity-scroller .unity-base-slider__tracker {
+    background-color: transparent;
+    border-width: 0;
+    margin: 0;
+}
+
+.chat-input .unity-scroller .unity-base-slider__dragger {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    border-width: 0;
+    min-width: 4px;
+    width: 4px;
+    margin: 0;
+    left: 0;
+}
+
+.chat-input .unity-scroller .unity-base-slider__dragger:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Hide the arrow buttons */
+.chat-input .unity-scroller .unity-repeat-button {
+    display: none;
+}
+
+/* Input footer with mode switcher, model selector, and auto-accept */
 .input-footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: 6px;
     padding: 0 2px;
+}
+
+.input-footer-left {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 /* Model selector button */
@@ -969,24 +1073,24 @@
 }
 
 .model-selector-label {
-    font-size: 10px;
-    color: #6B6B6B;
+    font-size: 11px;
+    color: #8A8A8A;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .model-selector-button:hover .model-selector-label {
-    color: #858585;
+    color: #A0A0A0;
 }
 
 .model-selector-arrow {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     margin-left: 4px;
     border-top-width: 1px;
     border-right-width: 1px;
-    border-color: #6B6B6B;
+    border-color: #8A8A8A;
     rotate: -45deg;
 }
 
@@ -996,9 +1100,9 @@
     align-items: center;
     background-color: transparent;
     border-width: 1px;
-    border-color: #333333;
-    border-radius: 3px;
-    padding: 2px 8px;
+    border-color: #3A3A3A;
+    border-radius: 4px;
+    padding: 3px 10px;
     margin-left: 8px;
 }
 
@@ -1018,13 +1122,13 @@
 }
 
 .auto-accept-label {
-    font-size: 10px;
-    color: #6B6B6B;
+    font-size: 11px;
+    color: #8A8A8A;
     white-space: nowrap;
 }
 
 .auto-accept-toggle:hover .auto-accept-label {
-    color: #858585;
+    color: #A0A0A0;
 }
 
 .auto-accept-toggle.auto-accept-active .auto-accept-label {
@@ -2280,10 +2384,6 @@
     margin-bottom: 8px;
 }
 
-.usage-bar-row:last-child {
-    margin-bottom: 0;
-}
-
 .usage-bar-header {
     flex-direction: row;
     justify-content: space-between;
@@ -2695,139 +2795,227 @@
     background-color: #242424;
 }
 
-/* Message undo button - mirrors copy button pattern */
-.message-undo-btn {
-    font-size: 10px;
-    color: #4B4B4B;
-    background-color: transparent;
-    border-width: 0;
-    padding: 2px 6px;
-    border-radius: 3px;
-    margin-left: 4px;
-    visibility: hidden;
-}
-
-.message:hover .message-undo-btn {
-    visibility: visible;
-}
-
-.message-undo-btn:hover {
-    color: #E8A040;
-    background-color: #242424;
-}
-
-/* Undo button awaiting confirmation */
-.message-undo-btn-confirm {
-    color: #E8A040;
-    visibility: visible;
-}
-
-/* Undo button after being clicked */
-.message-undo-btn-done {
-    color: #4B4B4B;
-    visibility: visible;
-}
-
-.message:hover .message-undo-btn-done {
-    visibility: visible;
-}
-
 /* ============================================
-   Accept / Reject Prompt (replaces input area)
+   Change Log Panel
    ============================================ */
 
-.accept-reject-prompt {
+.change-log-panel {
+    background-color: #121212;
+    border-top-width: 1px;
+    border-top-color: #242424;
     flex-shrink: 0;
     flex-grow: 0;
-    padding: 0;
-    background-color: #2A2A2A;
-    border-top-width: 2px;
-    border-top-color: #3A3A3A;
-    align-items: stretch;
+    max-height: 220px;
 }
 
-.accept-reject-prompt-title {
-    font-size: 13px;
-    color: #E0E0E0;
-    -unity-font-style: bold;
-    padding: 12px 16px 10px 16px;
-    background-color: #2F2F2F;
+.change-log-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #161616;
     border-bottom-width: 1px;
-    border-bottom-color: #3A3A3A;
+    border-bottom-color: #1A1A1A;
 }
 
-.accept-reject-prompt-options {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 8px 12px 12px 12px;
+.change-log-header:hover {
+    background-color: #1A1A1A;
 }
 
-.accept-reject-option {
+.change-log-title-row {
     flex-direction: row;
     align-items: center;
-    padding: 10px 14px;
-    margin-bottom: 4px;
+}
+
+.change-log-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    margin-right: 7px;
+    background-color: #3B82F6;
+}
+
+.change-log-title {
+    font-size: 11px;
+    color: #9B9B9B;
+    -unity-font-style: bold;
+}
+
+.change-log-actions {
+    flex-direction: row;
+    align-items: center;
+}
+
+.change-log-reject-btn {
+    font-size: 10px;
+    color: #F87171;
     background-color: transparent;
     border-width: 1px;
-    border-color: #3A3A3A;
-    border-radius: 6px;
-    transition-duration: 0.1s;
-}
-
-.accept-reject-option:hover {
-    background-color: rgba(17, 108, 212, 0.12);
-    border-color: #116cd4;
-}
-
-.accept-reject-option:active {
-    opacity: 0.8;
-}
-
-.accept-reject-yes {
-    background-color: rgba(17, 108, 212, 0.10);
-    border-color: #116cd4;
-}
-
-.accept-reject-no {
-    border-color: #3A3A3A;
-}
-
-.accept-reject-no:hover {
-    background-color: rgba(17, 108, 212, 0.08);
-    border-color: #116cd4;
-}
-
-.accept-reject-no:disabled {
-    border-color: #2A2A2A;
-    opacity: 0.35;
-}
-
-.accept-reject-option-number {
-    font-size: 11px;
-    color: #999999;
-    background-color: #222222;
-    border-width: 1px;
-    border-color: #444444;
+    border-color: rgba(248, 113, 113, 0.3);
     border-radius: 3px;
-    padding: 1px 6px;
-    margin-right: 10px;
-    -unity-font-style: bold;
-    min-width: 14px;
+    padding: 2px 8px;
+    margin-right: 6px;
+    transition-duration: 0.15s;
+}
+
+.change-log-reject-btn:hover {
+    background-color: rgba(248, 113, 113, 0.1);
+    border-color: #F87171;
+}
+
+.change-log-accept-btn {
+    font-size: 10px;
+    color: #4ADE80;
+    background-color: rgba(74, 222, 128, 0.08);
+    border-width: 1px;
+    border-color: rgba(74, 222, 128, 0.3);
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin-right: 6px;
+    transition-duration: 0.15s;
+}
+
+.change-log-accept-btn:hover {
+    background-color: rgba(74, 222, 128, 0.15);
+    border-color: #4ADE80;
+}
+
+.change-log-chevron {
+    font-size: 11px;
+    color: #4B4B4B;
+    -unity-text-align: middle-center;
+    width: 16px;
+    transition-duration: 0.15s;
+}
+
+.change-log-chevron.expanded {
+    rotate: 90deg;
+}
+
+.change-log-content {
+    padding: 2px 6px 6px 6px;
+    max-height: 150px;
+}
+
+.change-log-scroll {
+    max-height: 140px;
+    flex-shrink: 1;
+}
+
+/* Slim scrollbar matching rest of UI */
+.change-log-scroll .unity-scroller--vertical {
+    width: 4px;
+}
+
+.change-log-scroll .unity-scroller--vertical .unity-base-slider__tracker {
+    background-color: transparent;
+    border-width: 0;
+}
+
+.change-log-scroll .unity-scroller--vertical .unity-base-slider__dragger {
+    background-color: #333333;
+    border-radius: 2px;
+    width: 4px;
+}
+
+.change-log-scroll .unity-scroller--vertical .unity-base-slider__dragger:hover {
+    background-color: #6e6e6e;
+}
+
+.change-log-entries {
+    flex-direction: column;
+}
+
+.change-log-entry {
+    flex-direction: row;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 1px;
+}
+
+.change-log-entry:hover {
+    background-color: #1A1A1A;
+}
+
+.change-log-entry.clickable {
+    cursor: link;
+}
+
+.change-log-entry.clickable:hover {
+    background-color: #1E1E2E;
+}
+
+.change-log-entry.clickable:hover > .change-log-entry-description {
+    color: #E0E0E0;
+}
+
+.change-log-entry-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 7px;
+    flex-shrink: 0;
+}
+
+.change-log-entry-icon.spinner {
+    border-width: 2px;
+    border-color: #3B82F6;
+    border-top-color: transparent;
+    border-radius: 6px;
+    rotate: 0deg;
+    transition-duration: 0.3s;
+}
+
+.change-log-entry-icon.checkmark {
+    background-size: contain;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.change-log-entry-icon.failed-x {
+    background-size: contain;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.change-log-entry-description {
+    font-size: 11px;
+    color: #B0B0B0;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.change-log-entry-diff {
+    font-size: 9px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.change-log-entry-diff-add {
+    color: #4ADE80;
+}
+
+.change-log-entry-diff-remove {
+    color: #F87171;
+}
+
+/* Status flash (shown briefly after accept/reject) */
+.change-log-status {
+    padding: 6px 12px;
     -unity-text-align: middle-center;
 }
 
-.accept-reject-option-text {
-    font-size: 12px;
-    color: #C8C8C8;
+.change-log-status-label {
+    font-size: 11px;
+    -unity-text-align: middle-center;
 }
 
-.accept-reject-yes .accept-reject-option-text {
-    color: #5A9FE6;
+.change-log-status-label.accepted {
+    color: #4ADE80;
 }
 
-.accept-reject-yes .accept-reject-option-number {
-    color: #5A9FE6;
-    border-color: rgba(17, 108, 212, 0.4);
+.change-log-status-label.rejected {
+    color: #F87171;
 }
 
 /* Inline status labels for history (shown inside message bubbles) */
@@ -2837,8 +3025,216 @@
     margin-top: 6px;
 }
 
+.accept-reject-inline-accepted {
+    color: #4ADE80;
+}
+
 .accept-reject-inline-rejected {
     color: #E8A040;
+}
+
+/* ============================================
+   Mode Switcher (bubble toggle)
+   ============================================ */
+
+.mode-switcher {
+    flex-direction: row;
+    align-items: center;
+    background-color: #1A1A1A;
+    border-radius: 14px;
+    padding: 2px;
+    margin-right: 6px;
+}
+
+.mode-switcher-btn {
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 12px;
+    padding: 4px 12px;
+    margin: 0;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+}
+
+.mode-switcher-btn:hover {
+    background-color: #2A2A2A;
+}
+
+.mode-switcher-btn-label {
+    font-size: 11px;
+    color: #8A8A8A;
+    -unity-font-style: bold;
+    white-space: nowrap;
+}
+
+.mode-switcher-btn:hover .mode-switcher-btn-label {
+    color: #AAAAAA;
+}
+
+/* Active states — each mode gets its own color */
+.mode-switcher-agent.mode-switcher-active {
+    background-color: rgba(59, 130, 246, 0.20);
+}
+
+.mode-switcher-agent.mode-switcher-active .mode-switcher-btn-label {
+    color: #5A9FE6;
+}
+
+.mode-switcher-plan.mode-switcher-active {
+    background-color: rgba(74, 222, 128, 0.15);
+}
+
+.mode-switcher-plan.mode-switcher-active .mode-switcher-btn-label {
+    color: #4ADE80;
+}
+
+.mode-switcher-ask.mode-switcher-active {
+    background-color: rgba(168, 130, 255, 0.18);
+}
+
+.mode-switcher-ask.mode-switcher-active .mode-switcher-btn-label {
+    color: #A882FF;
+}
+
+/* ============================================
+   Plan Review Prompt
+   ============================================ */
+
+.plan-review-prompt {
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 10px 12px;
+    background-color: #1E1E1E;
+    border-top-width: 1px;
+    border-top-color: #333333;
+    align-items: stretch;
+}
+
+.plan-review-title {
+    font-size: 12px;
+    color: #C8C8C8;
+    -unity-font-style: bold;
+    margin-bottom: 8px;
+    padding: 0 2px;
+}
+
+.plan-review-options {
+    flex-direction: row;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.plan-review-btn {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    margin: 0 3px;
+    border-width: 1px;
+    border-radius: 6px;
+    background-color: transparent;
+    transition-duration: 0.1s;
+}
+
+.plan-review-btn-label {
+    font-size: 11px;
+    -unity-font-style: bold;
+}
+
+/* Execute button — green */
+.plan-execute-btn {
+    border-color: rgba(74, 222, 128, 0.4);
+    background-color: rgba(74, 222, 128, 0.08);
+}
+
+.plan-execute-btn:hover {
+    background-color: rgba(74, 222, 128, 0.18);
+    border-color: #4ADE80;
+}
+
+.plan-execute-btn .plan-review-btn-label {
+    color: #4ADE80;
+}
+
+/* Revise button — amber */
+.plan-revise-btn {
+    border-color: rgba(232, 160, 64, 0.4);
+    background-color: rgba(232, 160, 64, 0.06);
+}
+
+.plan-revise-btn:hover {
+    background-color: rgba(232, 160, 64, 0.15);
+    border-color: #E8A040;
+}
+
+.plan-revise-btn .plan-review-btn-label {
+    color: #E8A040;
+}
+
+/* Discard button — subtle */
+.plan-discard-btn {
+    border-color: #3A3A3A;
+}
+
+.plan-discard-btn:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: #555555;
+}
+
+.plan-discard-btn .plan-review-btn-label {
+    color: #888888;
+}
+
+/* Revision input container — seamless single bar */
+.plan-revision-container {
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 8px 0 0 0;
+    padding: 0;
+    background-color: transparent;
+    border-width: 0;
+}
+
+.plan-revision-input {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border-width: 0;
+    min-height: 34px;
+    max-height: 60px;
+}
+
+/* Override Unity's inner TextInput element to remove the nested box */
+.plan-revision-input > .unity-text-field__input {
+    background-color: #141414;
+    border-width: 1px;
+    border-color: #E8A040;
+    border-radius: 6px 0 0 6px;
+    padding: 8px 10px;
+    color: #C8C8C8;
+    font-size: 12px;
+    margin: 0;
+}
+
+.plan-revision-input:focus > .unity-text-field__input {
+    border-color: #E8A040;
+}
+
+.plan-revision-send-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 0 6px 6px 0;
+    background-color: #E8A040;
+    border-width: 0;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.plan-revision-send-btn:hover {
+    background-color: #F0B858;
 }
 
 /* ============================================
@@ -2953,10 +3349,6 @@
     border-color: #363636;
     border-radius: 6px;
     transition-duration: 0.15s;
-}
-
-.clarification-option:last-child {
-    margin-right: 0;
 }
 
 .clarification-option:hover {

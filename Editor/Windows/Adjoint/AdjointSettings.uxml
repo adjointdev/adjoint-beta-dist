@@ -57,6 +57,18 @@
                 </ui:VisualElement>
                 -->
 
+                <!-- Network Section -->
+                <ui:VisualElement name="network-section" class="section settings-section">
+                    <ui:Label text="Network" class="section-title" />
+                    <ui:VisualElement class="section-content">
+                        <ui:VisualElement class="setting-row">
+                            <ui:Label text="Proxy" class="setting-label" />
+                            <ui:DropdownField name="proxy-dropdown" class="setting-toggle" />
+                        </ui:VisualElement>
+                        <ui:Label name="proxy-status-label" text="" class="setting-description" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
                 <!-- Quick Actions Section -->
                 <ui:VisualElement name="actions-section" class="section settings-section">
                     <ui:Label text="Quick Actions" class="section-title" />
