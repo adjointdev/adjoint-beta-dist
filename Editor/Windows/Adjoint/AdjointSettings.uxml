@@ -61,6 +61,9 @@
                 <ui:VisualElement name="network-section" class="section settings-section">
                     <ui:Label text="Network" class="section-title" />
                     <ui:VisualElement class="section-content">
+                        <ui:Button name="reset-url-button" text="Reset Server URL" class="secondary-button settings-reset-url-button" />
+                        <ui:Label name="server-url-status" text="" class="setting-description" />
+
                         <ui:VisualElement class="setting-row">
                             <ui:Label text="Proxy" class="setting-label" />
                             <ui:DropdownField name="proxy-dropdown" class="setting-toggle" />

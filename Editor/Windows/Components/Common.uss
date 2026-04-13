@@ -100,10 +100,10 @@
 .validation-description {
     margin-top: 3px;
     padding: 6px;
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(88, 101, 242, 0.1);
     border-radius: 3px;
     border-left-width: 2px;
-    border-left-color: #3B82F6;
+    border-left-color: #5865F2;
     font-size: 10px;
     color: #858585;
     white-space: normal;
@@ -202,19 +202,19 @@
     background-color: transparent;
     border-radius: 3px;
     border-width: 1px;
-    border-color: #3B82F6;
-    color: #3B82F6;
+    border-color: #5865F2;
+    color: #5865F2;
     -unity-font-style: bold;
     font-size: 10px;
 
 }
 
 .action-button:hover {
-    background-color: rgba(59, 130, 246, 0.15);
+    background-color: rgba(88, 101, 242, 0.15);
 }
 
 .action-button:active {
-    background-color: rgba(59, 130, 246, 0.25);
+    background-color: rgba(88, 101, 242, 0.25);
 }
 
 .secondary-button {
@@ -567,8 +567,8 @@
 }
 
 .unity-theme-light .validation-description {
-    background-color: rgba(59, 130, 246, 0.08);
-    border-left-color: #3B82F6;
+    background-color: rgba(88, 101, 242, 0.08);
+    border-left-color: #5865F2;
 }
 
 .unity-theme-light .port-field > .unity-text-field__input {

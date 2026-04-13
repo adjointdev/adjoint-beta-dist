@@ -86,13 +86,12 @@
         <ui:VisualElement name="change-log-panel" class="change-log-panel" style="display: none;">
             <ui:VisualElement name="change-log-header" class="change-log-header">
                 <ui:VisualElement class="change-log-title-row">
-                    <ui:VisualElement class="change-log-dot" />
+                    <ui:Label name="change-log-chevron" text="›" class="change-log-chevron" />
                     <ui:Label name="change-log-title" text="Edited 0 Files" class="change-log-title" />
                 </ui:VisualElement>
                 <ui:VisualElement class="change-log-actions">
                     <ui:Button name="change-log-reject-btn" text="Undo all" class="change-log-reject-btn" style="display: none;" />
                     <ui:Button name="change-log-accept-btn" text="Keep all" class="change-log-accept-btn" style="display: none;" />
-                    <ui:Label name="change-log-chevron" text="›" class="change-log-chevron" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="change-log-content" class="change-log-content" style="display: none;">
@@ -124,10 +123,10 @@
 
                 <ui:VisualElement class="input-container">
                     <ui:TextField name="chat-input" multiline="true" class="chat-input"
-                        placeholder-text="Enter command... (drag context here)" />
+                        placeholder-text="Ask to build, debug, @mention or drag context" />
                     <ui:VisualElement class="input-buttons">
                         <ui:Button name="send-button" tooltip="Send" class="send-button">
-                            <ui:VisualElement name="send-icon" class="button-icon send-icon" />
+                            <ui:Label name="send-arrow" text="↑" class="send-arrow" />
                         </ui:Button>
                         <ui:Button name="stop-button" tooltip="Stop" class="stop-button" style="display: none;">
                             <ui:VisualElement name="stop-icon" class="button-icon x-icon" />
@@ -155,6 +154,9 @@
                 </ui:VisualElement>
                 <ui:Button name="auto-accept-toggle" class="auto-accept-toggle" tooltip="Toggle between auto-accept and manual approval of changes">
                     <ui:Label name="auto-accept-label" class="auto-accept-label" text="Auto-Accept" />
+                    <ui:VisualElement name="auto-accept-track" class="auto-accept-track">
+                        <ui:VisualElement name="auto-accept-thumb" class="auto-accept-thumb" />
+                    </ui:VisualElement>
                 </ui:Button>
             </ui:VisualElement>
         </ui:VisualElement>
@@ -178,10 +180,10 @@
         <ui:VisualElement name="plan-review-prompt" class="plan-review-prompt" style="display: none;">
             <ui:Label text="Execute this plan?" class="plan-review-title" />
             <ui:VisualElement class="plan-review-options">
-                <ui:Button name="plan-execute-btn" class="plan-review-btn plan-execute-btn">
+                <ui:Button name="plan-execute-btn" class="plan-review-btn plan-btn-selected">
                     <ui:Label text="Execute" class="plan-review-btn-label" />
                 </ui:Button>
-                <ui:Button name="plan-revise-btn" class="plan-review-btn plan-revise-btn">
+                <ui:Button name="plan-revise-btn" class="plan-review-btn plan-btn-unselected">
                     <ui:Label text="Revise" class="plan-review-btn-label" />
                 </ui:Button>
                 <ui:Button name="plan-discard-btn" class="plan-review-btn plan-discard-btn">
