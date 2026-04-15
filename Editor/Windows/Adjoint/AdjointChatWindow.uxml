@@ -123,8 +123,11 @@
 
                 <ui:VisualElement class="input-container">
                     <ui:TextField name="chat-input" multiline="true" class="chat-input"
-                        placeholder-text="Ask to build, debug, @mention or drag context" />
+                        placeholder-text="Ask to build, debug, @mention, drag context or images" />
                     <ui:VisualElement class="input-buttons">
+                        <ui:Button name="image-button" tooltip="Add image" class="image-button">
+                            <ui:Label text="+" class="image-button-label" />
+                        </ui:Button>
                         <ui:Button name="send-button" tooltip="Send" class="send-button">
                             <ui:Label name="send-arrow" text="↑" class="send-arrow" />
                         </ui:Button>

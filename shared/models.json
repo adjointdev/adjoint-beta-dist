@@ -59,7 +59,7 @@
       "displayName": "GPT-5.4",
       "provider": "OpenAI",
       "apiModelId": "gpt-5.4",
-      "maxContextTokens": 272000,
+      "maxContextTokens": 1050000,
       "supportsVision": true,
       "supportsTools": true,
       "costPerMillionInputTokens": 2.50,
@@ -70,7 +70,7 @@
       "rateLimitClass": "tier2",
 
       "showInSelector": true,
-      "fallbackModelId": "gpt-5-mini"
+      "fallbackModelId": "gpt-5.4-mini"
     },
     {
       "id": "minimax-m2.7",
@@ -109,15 +109,15 @@
       "fallbackModelId": null
     },
     {
-      "id": "gpt-5-mini",
-      "displayName": "GPT-5 Mini",
+      "id": "gpt-5.4-mini",
+      "displayName": "GPT-5.4 Mini",
       "provider": "OpenAI",
-      "apiModelId": "gpt-5-mini-2025-08-07",
+      "apiModelId": "gpt-5.4-mini-2026-03-17",
       "maxContextTokens": 400000,
       "supportsVision": true,
       "supportsTools": true,
-      "costPerMillionInputTokens": 0.25,
-      "costPerMillionOutputTokens": 2.0,
+      "costPerMillionInputTokens": 0.75,
+      "costPerMillionOutputTokens": 4.50,
       "tier": "simple",
       "multiplierLabel": "1x",
       "costMultiplier": 1.0,
