@@ -25,8 +25,8 @@
                 <ui:Button name="gen-panel-toggle" tooltip="Generation Queue" class="icon-button">
                     <ui:VisualElement name="gen-panel-icon" class="button-icon boxes-icon" />
                 </ui:Button>
-                <ui:Button name="project-desc-button" tooltip="Project Description" class="icon-button">
-                    <ui:VisualElement name="project-desc-icon" class="button-icon document-icon" />
+                <ui:Button name="project-rules-button" tooltip="Project Rules" class="icon-button">
+                    <ui:VisualElement name="project-rules-icon" class="button-icon document-icon" />
                 </ui:Button>
                 <ui:Button name="settings-button" tooltip="Settings" class="icon-button">
                     <ui:VisualElement name="settings-icon" class="button-icon settings-icon" />
@@ -84,8 +84,8 @@
             <!-- History Panel (Slide-out) -->
             <ui:VisualElement name="history-panel" class="side-panel history-panel" style="display: none;" />
 
-            <!-- Project Description Overlay (full content replacement) -->
-            <ui:VisualElement name="project-desc-overlay" class="project-desc-overlay" style="display: none;" />
+            <!-- Project Rules Overlay (full content replacement) -->
+            <ui:VisualElement name="project-rules-overlay" class="project-rules-overlay" style="display: none;" />
         </ui:VisualElement>
 
         <!-- Change Log Panel (tracks mutating tool calls across the session) -->

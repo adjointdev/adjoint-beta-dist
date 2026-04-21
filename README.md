@@ -12,7 +12,7 @@ This is a **beta release**. Features and APIs may change between updates.
 
 ## Requirements
 
-- **Unity 6000.0+**
+- **Unity 2021.3 LTS or newer** (2021.3 / 2022.3 / 2023.x / Unity 6)
 - An Adjoint account — sign up at [adjoint.pro](https://www.adjoint.pro/)
 
 ## Features

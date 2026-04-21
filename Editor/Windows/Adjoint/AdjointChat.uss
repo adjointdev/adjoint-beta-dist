@@ -196,7 +196,7 @@
     -unity-text-align: middle-center;
     padding: 2px 6px;
     margin: 0;
-    display: none;
+    visibility: hidden;
 }
 
 .user-message-copy-btn:hover {
@@ -205,7 +205,7 @@
 }
 
 .message-user:hover .user-message-copy-btn {
-    display: flex;
+    visibility: visible;
 }
 
 .message-assistant {
@@ -919,7 +919,6 @@
     font-size: 12px;
     color: #4A4A4A;
     white-space: normal;
-    -unity-word-wrap: true;
 }
 
 .thinking-bottom-label {
@@ -3901,10 +3900,10 @@
 }
 
 /* ========================================
-   PROJECT DESCRIPTION OVERLAY
+   PROJECT RULES OVERLAY
    ======================================== */
 
-.project-desc-overlay {
+.project-rules-overlay {
     position: absolute;
     left: 0;
     right: 0;
@@ -3915,7 +3914,7 @@
     overflow: hidden;
 }
 
-.project-desc-header {
+.project-rules-header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -3927,26 +3926,26 @@
     flex-shrink: 0;
 }
 
-.project-desc-header-left {
+.project-rules-header-left {
     flex-direction: row;
     align-items: center;
 }
 
-.project-desc-header-logo {
+.project-rules-header-logo {
     width: 18px;
     height: 18px;
     -unity-background-scale-mode: scale-to-fit;
     margin-right: 8px;
 }
 
-.project-desc-title {
+.project-rules-title {
     font-size: 13px;
     -unity-font-style: bold;
     color: #C8C8C8;
     letter-spacing: 1px;
 }
 
-.project-desc-close-btn {
+.project-rules-close-btn {
     width: 24px;
     height: 24px;
     background-color: transparent;
@@ -3957,13 +3956,13 @@
     justify-content: center;
 }
 
-.project-desc-close-btn:hover {
+.project-rules-close-btn:hover {
     background-color: #1A1A1A;
     border-color: #333333;
 }
 
 /* Description label */
-.project-desc-description {
+.project-rules-description {
     font-size: 12px;
     color: #A3A3A3;
     padding: 14px 16px 6px 16px;
@@ -3972,13 +3971,13 @@
 }
 
 /* Text area */
-.project-desc-text-container {
+.project-rules-text-container {
     flex-grow: 1;
     padding: 8px 16px 8px 16px;
     overflow: hidden;
 }
 
-.project-desc-textarea .unity-text-field__input {
+.project-rules-textarea .unity-text-field__input {
     flex-grow: 1;
     background-color: #161616;
     border-width: 1px;
@@ -3991,20 +3990,20 @@
     -unity-text-align: upper-left;
 }
 
-.project-desc-textarea .unity-text-field__input:focus {
+.project-rules-textarea .unity-text-field__input:focus {
     border-color: #5865F2;
 }
 
-.project-desc-textarea {
+.project-rules-textarea {
     flex-grow: 1;
 }
 
-.project-desc-textarea.placeholder-visible .unity-text-field__input {
+.project-rules-textarea.placeholder-visible .unity-text-field__input {
     color: #4B4B4B;
 }
 
 /* Footer */
-.project-desc-footer {
+.project-rules-footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -4015,21 +4014,21 @@
     flex-shrink: 0;
 }
 
-.project-desc-word-count {
+.project-rules-word-count {
     font-size: 11px;
     color: #858585;
 }
 
-.project-desc-word-count.over-limit {
+.project-rules-word-count.over-limit {
     color: #F87171;
 }
 
-.project-desc-footer-buttons {
+.project-rules-footer-buttons {
     flex-direction: row;
     align-items: center;
 }
 
-.project-desc-optimize-btn {
+.project-rules-optimize-btn {
     padding: 5px 14px;
     background-color: transparent;
     border-width: 1px;
@@ -4040,17 +4039,17 @@
     margin-right: 8px;
 }
 
-.project-desc-optimize-btn:hover {
+.project-rules-optimize-btn:hover {
     background-color: #1A1A1A;
     border-color: #5865F2;
     color: #C8C8C8;
 }
 
-.project-desc-optimize-btn:disabled {
+.project-rules-optimize-btn:disabled {
     opacity: 0.4;
 }
 
-.project-desc-save-btn {
+.project-rules-save-btn {
     padding: 5px 18px;
     background-color: #5865F2;
     border-width: 0;
@@ -4060,10 +4059,10 @@
     -unity-font-style: bold;
 }
 
-.project-desc-save-btn:hover {
+.project-rules-save-btn:hover {
     background-color: #6B78F5;
 }
 
-.project-desc-save-btn:disabled {
+.project-rules-save-btn:disabled {
     opacity: 0.4;
 }
