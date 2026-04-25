@@ -19,6 +19,24 @@
       "fallbackModelId": "claude-haiku-4-5"
     },
     {
+      "id": "gpt-5.5",
+      "displayName": "GPT-5.5",
+      "provider": "OpenAI",
+      "apiModelId": "gpt-5.5",
+      "maxContextTokens": 1050000,
+      "supportsVision": true,
+      "supportsTools": true,
+      "costPerMillionInputTokens": 5.0,
+      "costPerMillionOutputTokens": 30.0,
+      "tier": "reasoning",
+      "multiplierLabel": "3x",
+      "costMultiplier": 3.0,
+      "rateLimitClass": "tier1",
+
+      "showInSelector": true,
+      "fallbackModelId": "gpt-5.4"
+    },
+    {
       "id": "mimo-v2-pro",
       "displayName": "Auto",
       "provider": "Xiaomi",

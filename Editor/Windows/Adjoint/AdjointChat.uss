@@ -4066,3 +4066,58 @@
 .project-rules-save-btn:disabled {
     opacity: 0.4;
 }
+
+/* ───────── 3D Preview Picker ───────── */
+
+.preview-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    margin: 4px 18px 8px 18px;
+    white-space: normal;
+}
+
+.preview-thumbs-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 6px 12px;
+}
+
+.preview-thumb {
+    width: 168px;
+    height: 168px;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.08);
+    margin: 0 4px;
+    background-color: #1A1A1A;
+}
+
+.preview-thumb:hover {
+    border-color: rgba(120, 180, 255, 0.4);
+}
+
+.preview-thumb-selected {
+    border-color: rgba(120, 180, 255, 0.95);
+}
+
+.preview-revision-input {
+    margin: 8px 18px 2px 18px;
+    min-height: 28px;
+}
+
+.preview-actions-row {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.preview-regen-btn {
+    margin-right: 8px;
+}
+
+.preview-regenerate-disabled {
+    opacity: 0.4;
+}
+
+.preview-pick-disabled {
+    opacity: 0.4;
+}

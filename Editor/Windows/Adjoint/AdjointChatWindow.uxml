@@ -281,6 +281,38 @@
             </ui:VisualElement>
         </ui:VisualElement>
 
+        <!-- 3D Preview Picker (3 candidate images + regenerate/pick) -->
+        <ui:VisualElement name="model-preview-picker" class="clarification-prompt" style="display: none;">
+
+            <!-- Header with title and close button -->
+            <ui:VisualElement class="clarification-header">
+                <ui:Label name="preview-title" text="Pick a reference" class="clarification-title" />
+                <ui:Button name="preview-cancel" class="clarification-close-btn">
+                    <ui:Label text="&#x2715;" class="clarification-close-icon" />
+                </ui:Button>
+            </ui:VisualElement>
+
+            <!-- Subtitle -->
+            <ui:Label name="preview-subtitle" class="preview-subtitle"
+                text="Click to select. Use this to commit, or type a change and regenerate." />
+
+            <!-- Thumbnail row (populated at runtime) -->
+            <ui:VisualElement name="preview-thumbs-row" class="preview-thumbs-row" />
+
+            <!-- Revision text input -->
+            <ui:TextField name="preview-revision" class="preview-revision-input" />
+
+            <!-- Actions: Regenerate + Use this -->
+            <ui:VisualElement class="clarification-actions preview-actions-row">
+                <ui:Button name="preview-regenerate" class="clarification-generate-btn preview-regen-btn">
+                    <ui:Label name="preview-regenerate-label" text="Regenerate (3 left)" class="clarification-generate-label" />
+                </ui:Button>
+                <ui:Button name="preview-pick" class="clarification-generate-btn preview-pick-btn">
+                    <ui:Label text="Use this" class="clarification-generate-label" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
         <!-- Sprite Sheet Clarification Prompt (replaces input area during sprite sheet generation) -->
         <ui:VisualElement name="spritesheet-clarification-prompt" class="clarification-prompt" style="display: none;">
 
