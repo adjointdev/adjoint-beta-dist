@@ -217,6 +217,18 @@
     border-left-color: #F87171;
 }
 
+/* User-cancelled message: subtle inline italic note, not a status badge.
+   No background / no border / no border-radius — should read as a quiet
+   parenthetical so the user knows where their cancel landed without
+   feeling like the bubble was an error. */
+.message-stopped-label {
+    align-self: flex-start;
+    margin-top: 2px;
+    color: rgba(140, 140, 140, 0.7);
+    font-size: 10px;
+    -unity-font-style: italic;
+}
+
 .message-avatar {
     width: 28px;
     height: 28px;
@@ -1028,6 +1040,12 @@
     border-width: 0;
 }
 
+/* Subtle hint that the typed message is queued — Adjoint is busy and the
+   send button is hidden, but the user can keep typing. */
+.input--queued {
+    opacity: 0.85;
+}
+
 .chat-input .unity-text-field__placeholder > .unity-text-element {
     color: #3B3B3B;
 }
@@ -1182,6 +1200,73 @@
 
 .auto-accept-toggle.auto-accept-active .auto-accept-thumb {
     background-color: #FFFFFF;
+}
+
+/* Right-side group of input footer (modifier button + auto-accept toggle) */
+.input-footer-right {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Mode Modifier Trigger Button (single icon — opens popup with Default/Prototype options) */
+.mode-modifier-btn {
+    width: 26px;
+    height: 22px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 4px;
+    padding: 0;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-modifier-btn:hover {
+    background-color: #1A1A1A;
+}
+
+.mode-modifier-btn.mode-modifier-btn-active {
+    background-color: rgba(88, 101, 242, 0.18);
+}
+
+/* Wireframe cube icon (two offset squares — front + back face suggesting isometry) */
+.cube-icon {
+    width: 14px;
+    height: 14px;
+    position: relative;
+}
+
+.cube-icon-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #8A8A8A;
+}
+
+.cube-icon-back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #8A8A8A;
+}
+
+.mode-modifier-btn:hover .cube-icon-front,
+.mode-modifier-btn:hover .cube-icon-back {
+    border-color: #C8C8C8;
+}
+
+.mode-modifier-btn.mode-modifier-btn-active .cube-icon-front,
+.mode-modifier-btn.mode-modifier-btn-active .cube-icon-back {
+    border-color: #5865F2;
 }
 
 .input-buttons {
@@ -1817,6 +1902,9 @@
     font-size: 11px;
     color: #6B6B6B;
     margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .gen-progress-bar {
@@ -2718,6 +2806,72 @@
     background-color: rgba(52, 211, 153, 0.1);
 }
 
+/* Mode Modifier Popup (Default / Prototype) */
+.modifier-popup {
+    width: 300px;
+    padding: 6px 0 8px 0;
+}
+
+.modifier-popup-row {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 12px;
+    margin: 1px 4px;
+    border-radius: 4px;
+}
+
+.modifier-popup-row:hover {
+    background-color: #1A1A1A;
+}
+
+.modifier-popup-row-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.modifier-popup-row-text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-direction: column;
+}
+
+.modifier-popup-row-title {
+    font-size: 12px;
+    color: #C8C8C8;
+    -unity-font-style: bold;
+    margin-bottom: 2px;
+    white-space: normal;
+}
+
+.modifier-popup-row-desc {
+    font-size: 11px;
+    color: #7B7B7B;
+    white-space: normal;
+}
+
+.modifier-popup-row.modifier-popup-row-active {
+    background-color: rgba(88, 101, 242, 0.10);
+    border-left-width: 2px;
+    border-left-color: #5865F2;
+}
+
+.modifier-popup-row.modifier-popup-row-active .modifier-popup-row-title {
+    color: #FFFFFF;
+}
+
+.modifier-popup-row-check {
+    font-size: 12px;
+    color: #5865F2;
+    margin-left: 8px;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+
 /* ========================================
    MARKDOWN BLOCK RENDERING
    ======================================== */
@@ -3018,6 +3172,12 @@
     border-color: #F87171;
 }
 
+.change-log-reject-btn:disabled {
+    color: rgba(248, 113, 113, 0.35);
+    background-color: transparent;
+    border-color: rgba(248, 113, 113, 0.12);
+}
+
 .change-log-accept-btn {
     font-size: 11px;
     color: #4ADE80;
@@ -3033,6 +3193,12 @@
 .change-log-accept-btn:hover {
     background-color: rgba(74, 222, 128, 0.15);
     border-color: #4ADE80;
+}
+
+.change-log-accept-btn:disabled {
+    color: rgba(74, 222, 128, 0.35);
+    background-color: rgba(74, 222, 128, 0.03);
+    border-color: rgba(74, 222, 128, 0.12);
 }
 
 .change-log-chevron {

@@ -161,12 +161,20 @@
                         <ui:VisualElement class="model-selector-arrow" />
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:Button name="auto-accept-toggle" class="auto-accept-toggle" tooltip="Toggle between auto-accept and manual approval of changes">
-                    <ui:Label name="auto-accept-label" class="auto-accept-label" text="Auto-Accept" />
-                    <ui:VisualElement name="auto-accept-track" class="auto-accept-track">
-                        <ui:VisualElement name="auto-accept-thumb" class="auto-accept-thumb" />
-                    </ui:VisualElement>
-                </ui:Button>
+                <ui:VisualElement name="input-footer-right" class="input-footer-right">
+                    <ui:Button name="mode-modifier-button" class="mode-modifier-btn" tooltip="Mode modifier">
+                        <ui:VisualElement name="mode-modifier-icon-cube" class="cube-icon">
+                            <ui:VisualElement class="cube-icon-back" />
+                            <ui:VisualElement class="cube-icon-front" />
+                        </ui:VisualElement>
+                    </ui:Button>
+                    <ui:Button name="auto-accept-toggle" class="auto-accept-toggle" tooltip="Toggle between auto-accept and manual approval of changes">
+                        <ui:Label name="auto-accept-label" class="auto-accept-label" text="Auto-Accept" />
+                        <ui:VisualElement name="auto-accept-track" class="auto-accept-track">
+                            <ui:VisualElement name="auto-accept-thumb" class="auto-accept-thumb" />
+                        </ui:VisualElement>
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
 
