@@ -145,6 +145,12 @@
             </ui:VisualElement>
             <ui:VisualElement class="input-footer">
                 <ui:VisualElement class="input-footer-left">
+                    <ui:VisualElement name="context-icon-container" class="context-icon-container">
+                        <ui:Button name="context-icon-button" class="context-icon-button-circular">
+                            <ui:VisualElement name="context-icon-arc" class="context-icon-arc" picking-mode="Ignore" />
+                        </ui:Button>
+                        <ui:VisualElement name="context-icon-popup" class="context-icon-popup" picking-mode="Ignore" />
+                    </ui:VisualElement>
                     <ui:VisualElement name="mode-switcher" class="mode-switcher">
                         <ui:Button name="mode-btn-agent" class="mode-switcher-btn mode-switcher-agent">
                             <ui:Label text="Agent" class="mode-switcher-btn-label" />

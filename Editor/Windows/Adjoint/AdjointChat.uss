@@ -70,6 +70,130 @@
     border-color: #333333;
 }
 
+/* Context window usage indicator — circular arc rendered via Painter2D in
+   ContextWindowIcon.DrawArc. Sits in input-footer-left, just before the
+   Agent/Plan/Ask mode switcher. Click triggers manual compact; hover reveals a
+   Claude-style breakdown popup. */
+.context-icon-container {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 0 8px 0 2px;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.context-icon-button-circular {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border-width: 0;
+    cursor: link;
+}
+
+.context-icon-button-circular:hover {
+    background-color: transparent;
+}
+
+.context-icon-button-circular:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.context-icon-arc {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hover popup: hidden by default (display:none); ContextWindowIcon adds
+   .context-icon-popup--visible on MouseEnter and removes on MouseLeave.
+   Positioned above the icon with a small gap; pinned to the bottom-left
+   so it never clips against the chat window's right edge. */
+.context-icon-popup {
+    position: absolute;
+    bottom: 28px;
+    left: -8px;
+    width: 320px;
+    padding: 12px 14px 8px 14px;
+    background-color: #1A1A1A;
+    border-width: 1px;
+    border-color: #2E2E2E;
+    border-radius: 6px;
+    display: none;
+}
+
+.context-icon-popup--visible {
+    display: flex;
+    flex-direction: column;
+}
+
+.context-icon-popup-title-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.context-icon-popup-title {
+    color: #F0F0F0;
+    font-size: 13px;
+    -unity-font-style: bold;
+}
+
+.context-icon-popup-total {
+    color: #B0B0B0;
+    font-size: 12px;
+}
+
+.context-icon-popup-bar-track {
+    height: 6px;
+    background-color: #2A2A2A;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.context-icon-popup-bar-fill {
+    height: 6px;
+    width: 0;                   /* set by ContextWindowIcon */
+    background-color: #5A9FD4;  /* overridden via severity */
+    border-radius: 3px;
+}
+
+.context-icon-popup-divider {
+    height: 1px;
+    background-color: #2A2A2A;
+    margin: 2px 0 6px 0;
+}
+
+.context-icon-popup-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1px 0;
+}
+
+.context-icon-popup-label {
+    color: #C0C0C0;
+    font-size: 11px;
+    -unity-text-align: middle-left;
+}
+
+.context-icon-popup-value {
+    color: #C0C0C0;
+    font-size: 11px;
+    -unity-text-align: middle-right;
+    min-width: 50px;
+}
+
+/* Severity-colored arc + popup bar fill. Applied to .context-icon-container
+   so both the inline arc and the popup bar pick up the same hue. */
+.context-icon-container.context-sev-info    .context-icon-popup-bar-fill { background-color: #ECC94B; }
+.context-icon-container.context-sev-warn    .context-icon-popup-bar-fill { background-color: #ED8936; }
+.context-icon-container.context-sev-danger  .context-icon-popup-bar-fill { background-color: #E53E3E; }
+
 .model-selector {
     min-width: 140px;
     background-color: #161616;
