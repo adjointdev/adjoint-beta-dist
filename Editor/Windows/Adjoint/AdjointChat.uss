@@ -341,6 +341,167 @@
     border-left-color: #F87171;
 }
 
+/* ========================================
+   BYOA ERROR CARD
+   ======================================== */
+
+/* Replaces the prior "wall of red plain text" treatment of BYOA failures
+   with a structured card: icon + classified headline + kind chip + optional
+   suggested-action paragraph + collapsible raw stderr/stdout detail. The
+   parent .message-error rule still applies a 2px red left border at the
+   bubble level, so this card itself keeps a softer surface. */
+.byoa-error-card {
+    flex-direction: column;
+    background-color: #1A1212;
+    border-width: 1px;
+    border-color: #3A1F1F;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.byoa-error-top-row {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.byoa-error-icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #F87171;
+    margin-top: 6px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.byoa-error-kind-authfailed .byoa-error-icon,
+.byoa-error-kind-processnotfound .byoa-error-icon {
+    background-color: #FBBF24;
+}
+
+.byoa-error-kind-networkerror .byoa-error-icon {
+    background-color: #60A5FA;
+}
+
+.byoa-error-kind-usagelimitreached .byoa-error-icon,
+.byoa-error-kind-ratelimited .byoa-error-icon {
+    background-color: #F59E0B;
+}
+
+.byoa-error-text-col {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-direction: column;
+}
+
+.byoa-error-headline {
+    color: #F0F0F0;
+    font-size: 13px;
+    -unity-font-style: bold;
+    white-space: normal;
+}
+
+.byoa-error-reset-hint {
+    color: #B0B0B0;
+    font-size: 11px;
+    margin-top: 2px;
+    white-space: normal;
+}
+
+.byoa-error-kind-chip {
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    -unity-font-style: bold;
+    letter-spacing: 1px;
+    color: #F0F0F0;
+    background-color: #3A1F1F;
+    -unity-text-align: middle-center;
+    flex-shrink: 0;
+}
+
+.byoa-error-kind-chip-authfailed,
+.byoa-error-kind-chip-processnotfound {
+    background-color: #3A2E10;
+    color: #FBBF24;
+}
+
+.byoa-error-kind-chip-networkerror {
+    background-color: #1A2A3A;
+    color: #60A5FA;
+}
+
+.byoa-error-kind-chip-usagelimitreached,
+.byoa-error-kind-chip-ratelimited {
+    background-color: #3A2A10;
+    color: #F59E0B;
+}
+
+.byoa-error-kind-chip-unknown {
+    background-color: #2A1F1F;
+    color: #C0C0C0;
+}
+
+.byoa-error-action {
+    color: #C0C0C0;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-left: 20px;
+    white-space: normal;
+}
+
+.byoa-error-details-toggle {
+    align-self: flex-start;
+    margin-top: 8px;
+    margin-left: 16px;
+    padding: 2px 6px;
+    background-color: transparent;
+    border-width: 0;
+    color: #6B6B6B;
+    font-size: 11px;
+    -unity-text-align: middle-left;
+}
+
+.byoa-error-details-toggle:hover {
+    color: #B0B0B0;
+}
+
+.byoa-error-details {
+    flex-direction: column;
+    margin-top: 6px;
+    margin-left: 20px;
+    padding: 8px 10px;
+    background-color: #0F0808;
+    border-width: 1px;
+    border-color: #2A1F1F;
+    border-radius: 4px;
+}
+
+.byoa-error-detail-text {
+    color: #9A9A9A;
+    font-size: 11px;
+    white-space: normal;
+}
+
+.byoa-error-copy-btn {
+    align-self: flex-end;
+    margin-top: 6px;
+    padding: 2px 8px;
+    background-color: #2A1F1F;
+    border-width: 0;
+    border-radius: 3px;
+    color: #B0B0B0;
+    font-size: 10px;
+}
+
+.byoa-error-copy-btn:hover {
+    background-color: #3A2E2E;
+    color: #F0F0F0;
+}
+
 /* User-cancelled message: subtle inline italic note, not a status badge.
    No background / no border / no border-radius — should read as a quiet
    parenthetical so the user knows where their cancel landed without
@@ -396,6 +557,19 @@
 }
 
 .message-model {
+    font-size: 10px;
+    color: #4B4B4B;
+    margin-left: 6px;
+    padding: 1px 4px;
+    background-color: #1A1A1A;
+    border-radius: 2px;
+    border-width: 1px;
+    border-color: #242424;
+}
+
+/* Provenance pill on assistant messages routed through an external CLI
+   (Bring-Your-Own-Agent). Match the subdued Adjoint model badge treatment. */
+.message-via-external {
     font-size: 10px;
     color: #4B4B4B;
     margin-left: 6px;
@@ -672,6 +846,13 @@
     padding: 3px 8px 3px 10px;
 }
 
+.script-preview-title-group {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
 .script-preview-filename {
     font-size: 11px;
     color: #808080;
@@ -680,6 +861,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     flex-shrink: 1;
+}
+
+.script-preview-summary {
+    font-size: 10px;
+    color: #6F8F78;
+    margin-left: 8px;
+    flex-shrink: 0;
 }
 
 .script-preview-fullscreen-btn {
@@ -718,6 +906,14 @@
     flex-shrink: 0;
 }
 
+.script-preview-sign {
+    font-size: 11px;
+    color: #555555;
+    min-width: 12px;
+    -unity-text-align: upper-center;
+    flex-shrink: 0;
+}
+
 .script-preview-gutter-marker {
     width: 2px;
     min-width: 2px;
@@ -728,6 +924,10 @@
 
 .script-preview-gutter-marker.line-added {
     background-color: #4ADE80;
+}
+
+.script-preview-gutter-marker.line-removed {
+    background-color: #F87171;
 }
 
 .script-preview-gutter-marker.line-modified {
@@ -753,8 +953,30 @@
     background-color: rgba(74, 222, 128, 0.04);
 }
 
+.script-preview-line.line-added .script-preview-sign {
+    color: #4ADE80;
+}
+
+.script-preview-line.line-removed {
+    background-color: rgba(248, 113, 113, 0.05);
+}
+
+.script-preview-line.line-removed .script-preview-sign,
+.script-preview-line.line-removed .script-preview-line-content {
+    color: #F87171;
+}
+
 .script-preview-line.line-modified {
     background-color: rgba(250, 204, 21, 0.04);
+}
+
+.script-preview-line.line-separator {
+    padding: 2px 10px;
+}
+
+.script-preview-separator {
+    font-size: 11px;
+    color: #4A4A4A;
 }
 
 .script-preview-footer {
@@ -799,10 +1021,55 @@
     padding: 6px 12px;
 }
 
+.script-viewer-title-group {
+    flex-direction: column;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
 .script-viewer-title {
     font-size: 13px;
     color: #C8C8C8;
     -unity-font-style: bold;
+}
+
+.script-viewer-summary {
+    font-size: 11px;
+    color: #707070;
+    margin-top: 2px;
+}
+
+.script-viewer-actions {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.script-viewer-mode-toggle {
+    flex-direction: row;
+    background-color: #1A1A1A;
+    border-radius: 3px;
+    padding: 1px;
+    margin-right: 8px;
+}
+
+.script-viewer-mode-btn {
+    font-size: 11px;
+    color: #777777;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 2px;
+    padding: 2px 8px;
+}
+
+.script-viewer-mode-btn:hover {
+    color: #B0B0B0;
+    background-color: #242424;
+}
+
+.script-viewer-mode-btn.active {
+    color: #D0D0D0;
+    background-color: #303030;
 }
 
 .script-viewer-copy-btn {
@@ -813,6 +1080,7 @@
     border-color: #333333;
     padding: 2px 8px;
     border-radius: 3px;
+    margin-left: 6px;
 }
 
 .script-viewer-copy-btn:hover {
@@ -826,6 +1094,59 @@
 
 .script-viewer-code {
     padding: 8px 0;
+}
+
+.script-viewer-code-split {
+    min-width: 860px;
+}
+
+.script-viewer-split-header {
+    flex-direction: row;
+    border-bottom-width: 1px;
+    border-bottom-color: #242424;
+    margin-bottom: 4px;
+}
+
+.script-viewer-split-header-cell {
+    width: 50%;
+    font-size: 11px;
+    color: #777777;
+    -unity-font-style: bold;
+    padding: 4px 8px 5px 44px;
+}
+
+.script-viewer-split-row {
+    flex-direction: row;
+    min-height: 15px;
+}
+
+.script-viewer-split-cell {
+    width: 50%;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 8px 0 0;
+    overflow: hidden;
+}
+
+.script-viewer-split-cell.line-added {
+    background-color: rgba(74, 222, 128, 0.04);
+}
+
+.script-viewer-split-cell.line-added .script-preview-sign {
+    color: #4ADE80;
+}
+
+.script-viewer-split-cell.line-removed {
+    background-color: rgba(248, 113, 113, 0.05);
+}
+
+.script-viewer-split-cell.line-removed .script-preview-sign,
+.script-viewer-split-cell.line-removed .script-preview-line-content {
+    color: #F87171;
+}
+
+.script-viewer-split-cell.line-blank {
+    background-color: rgba(255, 255, 255, 0.015);
 }
 
 /* Content segments for interlaced display */
@@ -1958,6 +2279,37 @@
     color: #858585;
 }
 
+.settings-toggle-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    margin-bottom: 4px;
+}
+
+.settings-toggle-row-text {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 12px;
+}
+
+.settings-toggle-row-title {
+    font-size: 12px;
+    color: #C8C8C8;
+    margin-bottom: 2px;
+}
+
+.settings-toggle-row-description {
+    font-size: 10px;
+    color: #6B6B6B;
+    white-space: normal;
+}
+
+.settings-toggle {
+    flex-shrink: 0;
+}
+
 .settings-field {
     flex-grow: 1;
     flex-shrink: 1;
@@ -2734,6 +3086,30 @@
     margin-bottom: 10px;
 }
 
+.usage-section-title-wrap {
+    flex-direction: row;
+    align-items: center;
+}
+
+.plan-badge {
+    font-size: 9px;
+    -unity-font-style: bold;
+    padding: 2px 6px;
+    margin-left: 8px;
+    border-radius: 3px;
+    -unity-text-align: middle-center;
+}
+
+.plan-badge-free {
+    color: #9CA3AF;
+    background-color: rgba(156, 163, 175, 0.12);
+}
+
+.plan-badge-paid {
+    color: #7C84F8;
+    background-color: rgba(124, 132, 248, 0.15);
+}
+
 .usage-refresh-button {
     background-color: transparent;
     border-width: 0;
@@ -2900,10 +3276,24 @@
     flex-shrink: 0;
 }
 
+.model-popup-provider-logo {
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
+    flex-shrink: 0;
+}
+
 .model-popup-star {
     font-size: 7px;
-    color: #34D399;
+    color: #7C84F8;
     margin-left: 4px;
+    flex-shrink: 0;
+}
+
+.model-popup-crown {
+    font-size: 11px;
+    color: #EAB308;
+    margin-left: 6px;
     flex-shrink: 0;
 }
 
@@ -2928,6 +3318,101 @@
 .status-suggested {
     color: #34D399;
     background-color: rgba(52, 211, 153, 0.1);
+}
+
+.status-connected {
+    color: #22C55E;
+    background-color: rgba(34, 197, 94, 0.15);
+}
+
+/* "+ Add Agent" footer in the model picker */
+.model-popup-footer {
+    border-top-width: 0;
+}
+
+.model-popup-footer-label {
+    color: #A0A0A0;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.model-popup-footer-logos {
+    flex-direction: row;
+    align-items: center;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.model-popup-footer-logo {
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    flex-shrink: 0;
+}
+
+/* External-agent side flyout (model + reasoning effort picker) */
+.model-flyout {
+    width: 260px;
+    padding: 10px 12px 10px 12px;
+}
+
+.model-flyout-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.model-flyout-header-logo {
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.model-flyout-header-label {
+    -unity-font-style: bold;
+    color: #E0E0E0;
+    font-size: 13px;
+}
+
+.model-flyout-field-label {
+    font-size: 10px;
+    -unity-font-style: bold;
+    color: #6B6B6B;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+}
+
+.model-flyout-field {
+    margin-bottom: 4px;
+}
+
+.model-flyout-hint {
+    font-size: 10px;
+    color: #6B6B6B;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    white-space: normal;
+}
+
+.model-flyout-buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.model-flyout-cancel {
+    margin-right: 6px;
+}
+
+.model-flyout-use {
+    background-color: #5865F2;
+    color: #FFFFFF;
+    border-width: 0;
+    -unity-font-style: bold;
+}
+
+.model-flyout-use:hover {
+    background-color: #4752C4;
 }
 
 /* Mode Modifier Popup (Default / Prototype) */
@@ -3433,6 +3918,7 @@
 
 .change-log-entry-diff {
     font-size: 10px;
+    color: #7AA37F;
     margin-left: 8px;
     flex-shrink: 0;
 }

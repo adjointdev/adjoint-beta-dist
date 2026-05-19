@@ -9,12 +9,12 @@ using UnityEngine.UIElements;
 namespace MCPForUnity.Editor.Windows.Adjoint
 {
     /// <summary>
-    /// Adds "Run with Adjoint" button to the Unity main toolbar.
-    /// Uses Unity 6.3+ MainToolbar API.
+    /// Registers Adjoint's main-toolbar elements (Unity 6.3+).
+    ///   • "Adjoint/Run"  — middle dock, next to play. One-click start/stop play with Adjoint monitoring.
+    ///   • "Adjoint/Menu" — left dock, alongside AI/Asset Store/Unity VCS. Dropdown hub for all Adjoint actions.
     /// File is excluded from compilation on Unity 6000.0–6000.2 via UNITY_6000_3_OR_NEWER.
-    /// The same action remains available via the Adjoint menu and Cmd+Shift+R on all 6.x versions.
+    /// All actions remain reachable via the Adjoint menu and Cmd+Shift+{A,R,D} on every Unity version.
     /// Shipped as loose source in dist/ (NOT obfuscated) so the gate is evaluated against the user's actual Unity version.
-    /// Single button: Click to start Play Mode with Adjoint monitoring, click again to stop.
     /// </summary>
     public static class AdjointToolbarButton
     {
@@ -23,6 +23,10 @@ namespace MCPForUnity.Editor.Windows.Adjoint
         // (see scripts/build-dist.sh) where it compiles into Assembly-CSharp-Editor and cannot reach
         // the internal EditorPrefKeys class inside Adjoint.Editor.dll.
         private const string ToolbarAutoShownKey = "Adjoint.ToolbarButton.AutoShown";
+        private const string ToolbarMenuAutoShownKey = "Adjoint.ToolbarMenu.AutoShown";
+        private const string AdjointLogoGuid = "7e28d1c61eaf24a3f9528d76a118740f";
+        private const string AdjointLogoRelativePath = "Editor/Windows/Adjoint/Icons/adjoint-logo.png";
+        private const string KnownPackagePath = "Packages/com.adjoint.editor";
 
         private static Texture2D _adjointIcon;
         
@@ -51,7 +55,7 @@ namespace MCPForUnity.Editor.Windows.Adjoint
             else
             {
                 // Not running - show run state
-                icon = _adjointIcon;
+                icon = _adjointIcon ?? EditorGUIUtility.IconContent("d_PlayButton").image as Texture2D;
             }
             
             var content = new MainToolbarContent(icon);
@@ -101,7 +105,7 @@ namespace MCPForUnity.Editor.Windows.Adjoint
         private static void OnButtonClicked()
         {
             var service = AdjointRuntimeAnalysisService.Instance;
-            
+
             if (EditorApplication.isPlaying)
             {
                 // Currently playing - stop
@@ -112,37 +116,80 @@ namespace MCPForUnity.Editor.Windows.Adjoint
                 // Not playing - start with Adjoint
                 service.RunWithAdjoint();
             }
-            
+
             // Refresh button to update visual state
             MainToolbar.Refresh("Adjoint/Run");
         }
-        
+
+        /// <summary>
+        /// "Adjoint" dropdown — left dock, alongside AI / Asset Store / Unity VCS.
+        /// Acts as a hub: opens chat, settings, generation queue, etc.
+        /// </summary>
+        [MainToolbarElement("Adjoint/Menu", defaultDockPosition = MainToolbarDockPosition.Left)]
+        public static MainToolbarElement AdjointMenuDropdown()
+        {
+            LoadIcon();
+            var icon = _adjointIcon ?? EditorGUIUtility.IconContent("d_GUILayer Icon").image as Texture2D;
+            var content = new MainToolbarContent("Adjoint", icon, "Adjoint AI assistant");
+            return new MainToolbarDropdown(content, ShowAdjointMenu);
+        }
+
+        private static void ShowAdjointMenu(Rect activatorRect)
+        {
+            var menu = new GenericMenu();
+            menu.AddItem(new GUIContent("Open Chat"),                false, AdjointChatWindow.ShowWindow);
+            menu.AddItem(new GUIContent("Run Performance Analysis"), false, AdjointChatWindow.RunPerformanceAnalysis);
+            menu.AddItem(new GUIContent("Debug Console Errors"),     false, AdjointConsoleDebugButton.DebugConsoleErrors);
+            menu.AddSeparator("");
+            menu.AddItem(new GUIContent("Generation Queue"),         false, AdjointEditorWindow.ShowWindow);
+            menu.AddItem(new GUIContent("Clear Generation Queue"),   false, MCPForUnity.Editor.MenuItems.ClearGenerationQueue.Clear);
+            menu.AddSeparator("");
+            menu.AddItem(new GUIContent("Settings"),                 false, AdjointSettingsWindow.ShowWindow);
+            menu.DropDown(activatorRect);
+        }
+
         private static void LoadIcon()
         {
             if (_adjointIcon == null)
             {
                 // Try to load custom Adjoint icon
                 string basePath = Helpers.AssetPathUtility.GetMcpPackageRootPath();
-                _adjointIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(
-                    $"{basePath}/Editor/Windows/Adjoint/Icons/adjoint-logo.png");
-                
-                // Fallback to built-in icon if not found
+                if (!string.IsNullOrEmpty(basePath))
+                {
+                    _adjointIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(
+                        $"{basePath}/{AdjointLogoRelativePath}");
+                }
+
+                // Loose-source dist installs can compile this file outside the package assembly.
+                // The copied icon meta keeps this GUID stable even when package-root lookup misses.
                 if (_adjointIcon == null)
                 {
-                    _adjointIcon = EditorGUIUtility.IconContent("d_PlayButton").image as Texture2D;
+                    string guidPath = AssetDatabase.GUIDToAssetPath(AdjointLogoGuid);
+                    if (!string.IsNullOrEmpty(guidPath))
+                    {
+                        _adjointIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(guidPath);
+                    }
+                }
+
+                if (_adjointIcon == null)
+                {
+                    _adjointIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(
+                        $"{KnownPackagePath}/{AdjointLogoRelativePath}");
                 }
             }
         }
         
         /// <summary>
         /// Subscribe to play mode changes to refresh button state.
-        /// Auto-show toolbar button on first install.
+        /// Auto-show both toolbar elements on first install (each tracked under its own per-project pref key).
         /// </summary>
         [InitializeOnLoadMethod]
         private static void Initialize()
         {
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-            EditorApplication.delayCall += TryAutoShowToolbarButton;
+            EditorApplication.delayCall += () => TryAutoShowToolbarElement("Adjoint/Run", ToolbarAutoShownKey);
+            EditorApplication.delayCall += () => TryAutoShowToolbarElement("Adjoint/Menu", ToolbarMenuAutoShownKey);
+            EditorApplication.delayCall += TryEnsureIconLoaded;
         }
 
         private static void OnPlayModeStateChanged(PlayModeStateChange state)
@@ -151,12 +198,51 @@ namespace MCPForUnity.Editor.Windows.Adjoint
             MainToolbar.Refresh("Adjoint/Run");
         }
 
-        private static string ProjectSpecificPrefKey =>
-            $"{ToolbarAutoShownKey}.{Application.dataPath.GetHashCode()}";
+        // On first install AssetDatabase may still be indexing the package when Unity
+        // first invokes the toolbar factory, leaving _adjointIcon null. Poll briefly
+        // and refresh the toolbar elements once the real icon resolves so the user does
+        // not see the fallback icons until the next domain reload.
+        private static double _iconLoadDeadline;
+        private const double IconLoadTimeoutSeconds = 5.0;
 
-        private static void TryAutoShowToolbarButton()
+        private static void TryEnsureIconLoaded()
         {
-            if (EditorPrefs.GetBool(ProjectSpecificPrefKey, false))
+            // Reset the deadline on every exit path so this method is idempotent —
+            // any future caller can re-arm a fresh polling window without being
+            // blocked by a stale deadline from a prior load cycle.
+            if (_adjointIcon != null)
+            {
+                _iconLoadDeadline = 0;
+                return;
+            }
+
+            if (_iconLoadDeadline == 0)
+                _iconLoadDeadline = EditorApplication.timeSinceStartup + IconLoadTimeoutSeconds;
+
+            LoadIcon();
+            if (_adjointIcon != null)
+            {
+                try
+                {
+                    MainToolbar.Refresh("Adjoint/Run");
+                    MainToolbar.Refresh("Adjoint/Menu");
+                }
+                catch (Exception ex) { Debug.LogWarning($"[Adjoint] Toolbar refresh failed after icon load: {ex.Message}"); }
+                _iconLoadDeadline = 0;
+                return;
+            }
+
+            if (EditorApplication.timeSinceStartup < _iconLoadDeadline)
+                EditorApplication.delayCall += TryEnsureIconLoaded;
+            else
+                _iconLoadDeadline = 0;
+        }
+
+        private static void TryAutoShowToolbarElement(string elementId, string baseKey)
+        {
+            var prefKey = $"{baseKey}.{Application.dataPath.GetHashCode()}";
+
+            if (EditorPrefs.GetBool(prefKey, false))
                 return;
 
             if (Application.isBatchMode)
@@ -165,18 +251,18 @@ namespace MCPForUnity.Editor.Windows.Adjoint
             // Double delayCall to ensure toolbar is fully initialized
             EditorApplication.delayCall += () =>
             {
-                if (ShowToolbarElement("Adjoint/Run"))
+                if (ShowToolbarElement(elementId))
                 {
-                    EditorPrefs.SetBool(ProjectSpecificPrefKey, true);
+                    EditorPrefs.SetBool(prefKey, true);
                     return;
                 }
 
                 // Retry once — toolbar initialization can be slow
                 EditorApplication.delayCall += () =>
                 {
-                    if (ShowToolbarElement("Adjoint/Run"))
+                    if (ShowToolbarElement(elementId))
                     {
-                        EditorPrefs.SetBool(ProjectSpecificPrefKey, true);
+                        EditorPrefs.SetBool(prefKey, true);
                     }
                 };
             };

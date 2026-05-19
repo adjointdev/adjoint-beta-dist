@@ -41,6 +41,12 @@
                             <ui:Toggle name="auto-execute-toggle" class="setting-toggle" />
                         </ui:VisualElement>
                         <ui:Label text="Execute tools without confirmation (except destructive)" class="setting-description" />
+
+                        <ui:VisualElement class="setting-row">
+                            <ui:Label text="Disable Screenshot Tools" class="setting-label" />
+                            <ui:Toggle name="disable-screenshot-tools-toggle" class="setting-toggle" />
+                        </ui:VisualElement>
+                        <ui:Label text="Hide scene and game view screenshot tools from Adjoint" class="setting-description" />
                     </ui:VisualElement>
                 </ui:VisualElement>
 
